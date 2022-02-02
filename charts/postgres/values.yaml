@@ -1,0 +1,7 @@
+name: postgres
+
+image:
+  repository: postgres
+  pullPolicy: IfNotPresent
+# vaultSecrets:
+#   enable: true
