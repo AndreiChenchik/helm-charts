@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  postgres:
+  - apiVersion: v2
+    appVersion: "14.1"
+    created: "2022-02-02T11:52:22.973808224Z"
+    description: A Helm chart for Postgres
+    digest: 1c86ff1f7cc7769ad28d974b126a1bf4feb8bc0acaa759fc3764368aad547729
+    name: postgres
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/postgres-0.0.1/postgres-0.0.1.tgz
+    version: 0.0.1
   python-app:
   - apiVersion: v2
     created: "2022-02-02T07:44:29.439789397Z"
