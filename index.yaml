@@ -1,0 +1,11 @@
+apiVersion: v1
+entries:
+  python-app:
+  - apiVersion: v2
+    created: "2022-02-02T07:44:29.439789397Z"
+    digest: 96eb8f6f213e2ec8061228889607afd888d3a8bdbe252af5fa7adbb2b1ff1b6b
+    name: python-app
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/python-app-0.0.1/python-app-0.0.1.tgz
+    version: 0.0.1
+generated: "2022-02-02T07:44:29.3003065Z"
