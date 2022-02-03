@@ -53,7 +53,7 @@ spec:
           ports:
             - containerPort: {{ .Values.service.targetPort }}
 
-          {{- if or .Values.config .Values.envSecret .Values.vaultSecrets.toEnv.enabled }}
+          {{- if or .Values.config .Values.envSecrets .Values.vaultSecrets.toEnv.enabled }}
           envFrom:
             {{- if .Values.config }}
             - configMapRef:
@@ -63,9 +63,9 @@ spec:
             - secretRef:
                 name: {{ .Values.name }}-vault-secret
             {{- end}}            
-            {{- if .Values.envSecret }}
+            {{- if .Values.envSecrets }}
             - secretRef:
-                name: {{ .Values.envSecret }}
+                name: {{ .Values.envSecrets }}
             {{- end }}
           {{- end }}
       
