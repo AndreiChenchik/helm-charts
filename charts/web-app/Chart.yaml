@@ -4,10 +4,10 @@ description: A Helm chart for adding arbitry web app to k8s
 version: 0.2.0
 dependencies:
   - name: vault-k8s-role
-    version: "~0.0.1"
+    version: "0.0.4"
     condition: vault-k8s-role.enabled
     repository: "https://chenchik.me/helm-charts"
   - name: vault-policy
-    version: "~0.0.1"
+    version: "0.0.4"
     condition: vault-policy.enabled
     repository: "https://chenchik.me/helm-charts"
