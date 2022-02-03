@@ -63,7 +63,7 @@ spec:
                 name: "{{ .Release.Name }}"
             {{- end}}
             
-            {{- if .Values.vaultSecrets.toEnv.enabled }}
+            {{- if .Values.vault.envSecret.enabled }}
             - secretRef:
                 name: {{ .Release.Name }}-vault-secret
             {{- end}}            
@@ -72,6 +72,6 @@ spec:
             - secretRef:
                 name: {{ .Values.envSecrets }}
             {{- end }}
-            
+
           {{- end }}
       
