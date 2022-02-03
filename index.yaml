@@ -58,7 +58,37 @@ entries:
     urls:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-init-0.0.1/vault-init-0.0.1.tgz
     version: 0.0.1
+  vault-k8s-role:
+  - apiVersion: v2
+    appVersion: 1.9.3
+    created: "2022-02-03T17:55:37.689643954Z"
+    description: A Helm chart with a job to add k8s auth role to vault instance
+    digest: c594f39555967c79a98a48bbca59b561c216e4d7713246adffe5cd1999f1a89b
+    name: vault-k8s-role
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-k8s-role-0.0.2/vault-k8s-role-0.0.2.tgz
+    version: 0.0.2
+  vault-policy:
+  - apiVersion: v2
+    appVersion: 1.9.3
+    created: "2022-02-03T17:55:37.819987211Z"
+    description: A Helm chart with a job to check and optionally create vault policy
+    digest: 56f028a8c0582b6b6f59b035788e8839bbffa811520dbb9433265d1cb8d8ba0e
+    name: vault-policy
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-policy-0.0.2/vault-policy-0.0.2.tgz
+    version: 0.0.2
   web-app:
+  - apiVersion: v2
+    created: "2022-02-03T17:55:37.937344313Z"
+    description: A Helm chart for adding arbitry web app to k8s
+    digest: 80e2fc74ea12f475ac2bf75d3ef7ead51f6e3e39b902d531427f100618029091
+    name: web-app
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/web-app-0.1.6/web-app-0.1.6.tgz
+    version: 0.1.6
   - apiVersion: v2
     created: "2022-02-03T17:52:07.94000696Z"
     description: A Helm chart for adding arbitry web app to k8s
