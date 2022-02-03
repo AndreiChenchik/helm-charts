@@ -1,5 +1,10 @@
 image:
   repository: vault
 
-serverUrl: http://vault:8200
-serverNamespace: vault
+vault:
+  server:
+    url: "http://vault.vault:8200"
+    namespace: vault
+  # token:
+  #   secretName: secret-with-vault-token
+  #   secretKey: root_token

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: "{{ .Release.Name }}-{{ .Chart.Name }}"
-  namespace: "{{ .Values.serverNamespace }}"
+  namespace: "{{ .Values.vault.server.namespace }}"
 data:
   check-vault-running.sh: |-
     #!/bin/ash
