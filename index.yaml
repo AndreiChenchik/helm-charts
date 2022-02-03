@@ -69,6 +69,17 @@ entries:
     urls:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-k8s-role-0.0.3/vault-k8s-role-0.0.3.tgz
     version: 0.0.3
+  vault-policy:
+  - apiVersion: v2
+    appVersion: 1.9.3
+    created: "2022-02-03T17:57:04.883220157Z"
+    description: A Helm chart with a job to check and optionally create vault policy
+    digest: 1d28188c48b823437a27e299ba4c15c8fbd24699718201e67d268645a37ca22d
+    name: vault-policy
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-policy-0.0.3/vault-policy-0.0.3.tgz
+    version: 0.0.3
   web-app:
   - apiVersion: v2
     created: "2022-02-03T17:52:07.94000696Z"
