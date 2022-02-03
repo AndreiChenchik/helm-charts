@@ -3,4 +3,4 @@ name: vault-policy
 description: A Helm chart with a job to check and optionally create vault policy
 type: application
 appVersion: "1.9.3"
-version: 0.0.1
+version: 0.0.2
