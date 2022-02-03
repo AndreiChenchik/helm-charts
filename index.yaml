@@ -99,6 +99,16 @@ entries:
   vault-policy:
   - apiVersion: v2
     appVersion: 1.9.3
+    created: "2022-02-03T19:42:01.476526954Z"
+    description: A Helm chart with a job to check and optionally create vault policy
+    digest: c303f33f15a169dd4c7e2a0fb1fe92a0bdad33687772edda0ad70cbcefd5dd58
+    name: vault-policy
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-policy-0.0.5/vault-policy-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
+    appVersion: 1.9.3
     created: "2022-02-03T18:05:20.836527202Z"
     description: A Helm chart with a job to check and optionally create vault policy
     digest: 93eae40eb21ef60313e161d2e501366a07b5c496fe4d04fdb9c147d5dc8558bb
