@@ -42,6 +42,19 @@ entries:
     version: 0.0.1
   web-app:
   - apiVersion: v2
+    created: "2022-02-03T16:42:58.165609201Z"
+    dependencies:
+    - condition: vault-init.enabled
+      name: vault-init
+      repository: https://chenchik.me/helm-charts
+      version: ~0.0.1
+    description: A Helm chart for adding arbitry web app to k8s
+    digest: 1dee65434f459b48a297b648586766bce5c420fe8214c2948b3312a917f9c7fd
+    name: web-app
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/web-app-0.1.4/web-app-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
     created: "2022-02-03T16:35:41.672163175Z"
     dependencies:
     - condition: vault-activate.enabled
