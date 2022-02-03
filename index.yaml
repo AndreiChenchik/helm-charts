@@ -78,6 +78,16 @@ entries:
   vault-k8s-role:
   - apiVersion: v2
     appVersion: 1.9.3
+    created: "2022-02-03T18:15:43.493240825Z"
+    description: A Helm chart with a job to add k8s auth role to vault instance
+    digest: ddeaf0866060ec4baa762eccbdb22577d123db284bf7c96ef0d95151304cf857
+    name: vault-k8s-role
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-k8s-role-0.0.5/vault-k8s-role-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
+    appVersion: 1.9.3
     created: "2022-02-03T17:56:06.813133422Z"
     description: A Helm chart with a job to add k8s auth role to vault instance
     digest: 6a0e796587e96850a7ebfcad97c4c9513f6b7d994aae9d5943e057d8a5c78ab3
@@ -108,6 +118,23 @@ entries:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-policy-0.0.3/vault-policy-0.0.3.tgz
     version: 0.0.3
   web-app:
+  - apiVersion: v2
+    created: "2022-02-03T18:15:43.624554907Z"
+    dependencies:
+    - condition: vault-k8s-role.enabled
+      name: vault-k8s-role
+      repository: https://chenchik.me/helm-charts
+      version: 0.0.3
+    - condition: vault-policy.enabled
+      name: vault-policy
+      repository: https://chenchik.me/helm-charts
+      version: 0.0.4
+    description: A Helm chart for adding arbitry web app to k8s
+    digest: 9c14709aace4d1d0eddf7469cc2b06709614d36c9781e3ff1b3b821593a147e3
+    name: web-app
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/web-app-0.2.1/web-app-0.2.1.tgz
+    version: 0.2.1
   - apiVersion: v2
     created: "2022-02-03T17:59:19.00783472Z"
     dependencies:
