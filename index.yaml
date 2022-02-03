@@ -78,16 +78,6 @@ entries:
   vault-k8s-role:
   - apiVersion: v2
     appVersion: 1.9.3
-    created: "2022-02-03T21:39:43.166836362Z"
-    description: A Helm chart with a job to add k8s auth role to vault instance
-    digest: 92824b2005c079f24695625e6011f02eeba7fb2494e08d122ee8cc0779ad3eb5
-    name: vault-k8s-role
-    type: application
-    urls:
-    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-k8s-role-0.1.1/vault-k8s-role-0.1.1.tgz
-    version: 0.1.1
-  - apiVersion: v2
-    appVersion: 1.9.3
     created: "2022-02-03T21:20:01.215751982Z"
     description: A Helm chart with a job to add k8s auth role to vault instance
     digest: 9c9a513a77df09f7ef7e396c98b856439a17ebd372fa239d542bd9ace423c674
@@ -117,6 +107,16 @@ entries:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-k8s-role-0.0.3/vault-k8s-role-0.0.3.tgz
     version: 0.0.3
   vault-policy:
+  - apiVersion: v2
+    appVersion: 1.9.3
+    created: "2022-02-03T21:40:23.428806375Z"
+    description: A Helm chart with a job to check and optionally create vault policy
+    digest: fb026f7a459bc8f43fe00c889709ef9ba44fcc2c5b460044c602f26b30104212
+    name: vault-policy
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-policy-0.1.1/vault-policy-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.9.3
     created: "2022-02-03T21:20:56.26724035Z"
