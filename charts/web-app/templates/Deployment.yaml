@@ -17,7 +17,7 @@ spec:
       labels:
         app: {{ .Values.name }}
 
-      {{- if .Values.vaultSecrets.toMound.enabled }}
+      {{- if .Values.vaultSecrets.toMount.enabled }}
       annotations:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/agent-inject-status: "update"
