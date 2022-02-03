@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{ .Release.Name }}"
+  name: "{{ .Chart.Name }}"
   namespace: "{{ .Release.Namespace }}"
 spec:
   backoffLimit: 0
@@ -36,4 +36,4 @@ spec:
         - name: scripts
           configMap:
             defaultMode: 0700
-            name: "{{ .Release.Name }}"
+            name: "{{ .Chart.Name }}"
