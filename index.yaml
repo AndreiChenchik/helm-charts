@@ -19,6 +19,24 @@ entries:
     urls:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/python-app-0.0.1/python-app-0.0.1.tgz
     version: 0.0.1
+  vault-bootstrap:
+  - apiVersion: v2
+    created: "2022-02-03T17:14:17.895446603Z"
+    dependencies:
+    - name: vault
+      repository: https://helm.releases.hashicorp.com
+      version: ~0.19
+    - condition: vault-init.enabled
+      name: vault-init
+      repository: https://chenchik.me/helm-charts
+      version: ~0.0.1
+    description: An umbrella Helm chart with a Vault instance which can be auto-activated
+    digest: f0ad9918dc92118a48bfc691cf1638575b349741df74a5a065b2770de8a224d8
+    name: vault-bootstrap
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-bootstrap-0.0.1/vault-bootstrap-0.0.1.tgz
+    version: 0.0.1
   vault-init:
   - apiVersion: v2
     appVersion: 1.9.3
