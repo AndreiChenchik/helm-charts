@@ -1,4 +1,5 @@
 image:
   repository: vault
 
-serverUrl: http://vault.vault:8200
+serverUrl: http://vault:8200
+serverNamespace: vault
