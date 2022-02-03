@@ -149,6 +149,23 @@ entries:
     version: 0.0.3
   web-app:
   - apiVersion: v2
+    created: "2022-02-03T21:28:37.892494239Z"
+    dependencies:
+    - condition: jobs.vault-k8s-role
+      name: vault-k8s-role
+      repository: https://chenchik.me/helm-charts
+      version: 0.1.0
+    - condition: jobs.vault-policy
+      name: vault-policy
+      repository: https://chenchik.me/helm-charts
+      version: 0.1.0
+    description: A Helm chart for adding arbitry web app to k8s
+    digest: 549c390b39770298e731ff767c20de6dd6aab627fa762a16da9f21fa850e3e8f
+    name: web-app
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/web-app-0.3.1/web-app-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
     created: "2022-02-03T21:23:12.844943431Z"
     dependencies:
     - condition: jobs.vault-k8s-role
