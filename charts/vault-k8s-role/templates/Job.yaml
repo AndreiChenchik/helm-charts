@@ -1,8 +1,8 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{ .Chart.Name }}"
-  namespace: "{{ .Release.Namespace }}"
+  name: "{{ .Release.Name }}-{{ .Chart.Name }}"
+  namespace: "{{ .Values.vault.server.namespace }}"
 spec:
   backoffLimit: 0
   template:
@@ -13,7 +13,7 @@ spec:
           command: ["/bin/check-vault-running.sh"]
           env:
             - name: VAULT_ADDR
-              value: "{{ .Values.serverUrl }}"
+              value: "{{ .Values.vault.server.url }}"
           volumeMounts:
             - name: scripts
               mountPath: /bin/check-vault-running.sh
@@ -25,7 +25,14 @@ spec:
           command: ["/bin/check-vault-running.sh"]
           env:
             - name: VAULT_ADDR
-              value: "{{ .Values.serverUrl }}"
+              value: "{{ .Values.vault.server.url }}"
+            {{- if .Value.vault.server.token.secretName }}
+            - name: VAULT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Value.vault.server.token.secretName }}
+                  key: {{ .Value.vault.server.token.secretKey }}
+            {{- end }}
           volumeMounts:
             - name: scripts
               mountPath: /bin/check-vault-running.sh
@@ -36,4 +43,4 @@ spec:
         - name: scripts
           configMap:
             defaultMode: 0700
-            name: "{{ .Chart.Name }}"
+            name: "{{ .Release.Name }}-{{ .Chart.Name }}"
