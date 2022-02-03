@@ -22,6 +22,16 @@ entries:
   vault-init:
   - apiVersion: v2
     appVersion: 1.9.3
+    created: "2022-02-03T16:38:45.222741655Z"
+    description: A Helm chart with a job to init empty vault instance
+    digest: 31d69f322f67dd499db96db70c0ca7678ba1e8494369edb98b9981e0aea44258
+    name: vault-init
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-init-0.0.2/vault-init-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 1.9.3
     created: "2022-02-03T16:33:09.859107734Z"
     description: A Helm chart with a job to init empty vault instance
     digest: 47e178398fb409d0c3b0f864cc077c606e442dcc26aa87df9625e70ff867fcd6
