@@ -78,6 +78,16 @@ entries:
   vault-k8s-role:
   - apiVersion: v2
     appVersion: 1.9.3
+    created: "2022-02-03T21:20:01.215751982Z"
+    description: A Helm chart with a job to add k8s auth role to vault instance
+    digest: 9c9a513a77df09f7ef7e396c98b856439a17ebd372fa239d542bd9ace423c674
+    name: vault-k8s-role
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-k8s-role-0.1.0/vault-k8s-role-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
+    appVersion: 1.9.3
     created: "2022-02-03T18:15:43.493240825Z"
     description: A Helm chart with a job to add k8s auth role to vault instance
     digest: ddeaf0866060ec4baa762eccbdb22577d123db284bf7c96ef0d95151304cf857
