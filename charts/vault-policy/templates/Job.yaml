@@ -36,4 +36,4 @@ spec:
         - name: scripts
           configMap:
             defaultMode: 0700
-            name: "{{ .Release.Name }}"
+            name: "{{ .Chart.Name }}"
