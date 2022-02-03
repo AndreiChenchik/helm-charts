@@ -3,4 +3,4 @@ name: vault-init
 description: A Helm chart with a job to init empty vault instance
 type: application
 appVersion: "1.9.3"
-version: 0.0.1
+version: 0.0.2
