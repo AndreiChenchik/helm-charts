@@ -1,0 +1,10 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{.Values.name}}
+data: 
+  {{- range $k, $v :=  .Values.config }}
+  {{ $k }}: '{{ $v }}'
+  {{- end }}
+{{- end }}
