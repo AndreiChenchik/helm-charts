@@ -1,3 +1,4 @@
+{{- if .Values.ingressHost }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 
@@ -10,11 +11,12 @@ spec:
 
   routes:
     - kind: Rule
-      match: Host(`{{.Values.host}}`)
+      match: Host(`{{.Values.ingressHost}}`)
 
       services:
         - name: {{ .Values.name }}
-          port: 80
+          port: {{ .Values.service.servicePort }}
 
   tls:
     certResolver: acme-http
+{{- end }}
