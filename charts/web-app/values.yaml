@@ -35,6 +35,7 @@ vaultSecrets:
     fields:
       # - names of fields in vault to inject as envs
 
-vault-init:
+vault-k8s-role:
   enabled: false
-  serverUrl: "http://vault.vault:8200"
+vault-policy:
+  enabled: false
