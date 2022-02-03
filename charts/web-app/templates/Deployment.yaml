@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: {{ .Values.name }}
+  name: "{{ .Release.Name }}"
+  namespace: "{{ .Release.Namespace }}"
 
 spec:
   replicas: 1
@@ -10,33 +11,34 @@ spec:
 
   selector:
     matchLabels:
-      app: {{ .Values.name }}
+      app: "{{ .Release.Name }}"
 
   template:
     metadata:
       labels:
-        app: {{ .Values.name }}
+        app: "{{ .Release.Name }}"
 
-      {{- if .Values.vaultSecrets.toMount.enabled }}
+      {{- if .Values.vault.mountSecret.enabled }}
       annotations:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/agent-inject-status: "update"
-        vault.hashicorp.com/role: {{ .Values.vaultSecrets.vaultRole | default .Values.name }}
-        vault.hashicorp.com/agent-inject-secret-spawn: "{{ .Values.vaultSecrets.server.kvEndpoint }}/{{ .Values.vaultSecrets.secretPath }}"
-        vault.hashicorp.com/secret-volume-path-spawn: "{{ .Values.vaultSecrets.toMount.mountPath }}"
+        vault.hashicorp.com/role: {{ .Values.vault.role | default .Release.Name }}
+        vault.hashicorp.com/agent-inject-secret-spawn: "{{ .Values.vault.server.kvEndpoint }}/{{ .Values.vault.secretPath }}"
+        vault.hashicorp.com/secret-volume-path-spawn: "{{ .Values.vault.mountSecret.path }}"
         vault.hashicorp.com/agent-inject-template-spawn: |
           {{- `
-          {{- with secret "`}}{{ .Values.vaultSecrets.server.kvEndpoint }}/data/{{ .Values.vaultSecrets.secretPath }}{{`" -}}
+          {{- with secret "`}}{{ .Values.vault.server.kvEndpoint }}/data/{{ .Values.vault.secretPath }}{{`" -}}
           {{- range $k, $v := .Data.data }}
-          echo {{ $v }} > `}}{{ .Values.vaultSecrets.toMount.mountPath }}{{`/{{ $k }}
+          echo {{ $v }} > `}}{{ .Values.vault.mountSecret.path }}{{`/{{ $k }}
           {{- end }}{{ end }}
-          rm `}}{{ .Values.vaultSecrets.toMount.mountPath }}{{`/spawn
+          rm `}}{{ .Values.vault.mountSecret.path }}{{`/spawn
           `}}
-        vault.hashicorp.com/agent-inject-command-spawn: "cat {{ .Values.vaultSecrets.toMount.mountPath }}/spawn | sh --"
+        vault.hashicorp.com/agent-inject-command-spawn: "cat {{ .Values.vault.mountSecret.path }}/spawn | sh --"
       {{- end }}
+    
     spec:
-      {{- if or .Values.vaultSecrets.toMount.enabled .Values.vaultSecrets.toEnv.enabled }}
-      serviceAccountName: {{ .Values.name }}
+      {{- if or .Values.vault.mountSecret.enabled .Values.vault.envSecret.enabled }}
+      serviceAccountName: "{{ .Release.Name }}"
       {{- end }}
 
       {{- if .Values.image.pullSecret }}
@@ -45,7 +47,7 @@ spec:
       {{- end }}
 
       containers:
-        - name: {{ .Values.name }}
+        - name: "{{ .Release.Name }}"
 
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{.Values.image.pullPolicy}}
@@ -53,19 +55,23 @@ spec:
           ports:
             - containerPort: {{ .Values.service.targetPort }}
 
-          {{- if or .Values.config .Values.envSecrets .Values.vaultSecrets.toEnv.enabled }}
+          {{- if or .Values.config .Values.envSecrets .Values.vault.envSecret.enabled }}
           envFrom:
+            
             {{- if .Values.config }}
             - configMapRef:
-                name: {{ .Values.name }}
+                name: "{{ .Release.Name }}"
             {{- end}}
+            
             {{- if .Values.vaultSecrets.toEnv.enabled }}
             - secretRef:
-                name: {{ .Values.name }}-vault-secret
+                name: {{ .Release.Name }}-vault-secret
             {{- end}}            
+            
             {{- if .Values.envSecrets }}
             - secretRef:
                 name: {{ .Values.envSecrets }}
             {{- end }}
+            
           {{- end }}
       

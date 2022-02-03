@@ -1,5 +1,3 @@
-name: some-web-app
-
 # ingressHost: hello.enableops.io
 
 image:
@@ -17,7 +15,7 @@ service:
 
 # envSecrets: any secret to use as for environment variables
 
-vaultSecrets:
+vault:
   server:
     kvEndpoint: "kv"
     url: "http://vault.vault:8200"
@@ -26,16 +24,15 @@ vaultSecrets:
 
   secretPath: "secret"
 
-  toMount:
+  mountSecret:
     enabled: false
-    mountPath: "/vault/secrets"
+    # path: "/where/to/mount"
 
-  toEnv:
+  envSecret:
     enabled: false
     fields:
       # - names of fields in vault to inject as envs
 
-vault-k8s-role:
-  enabled: false
-vault-policy:
-  enabled: false
+jobs:
+  vault-k8s-role: false
+  vault-policy: false
