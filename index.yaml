@@ -19,4 +19,13 @@ entries:
     urls:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/python-app-0.0.1/python-app-0.0.1.tgz
     version: 0.0.1
+  web-app:
+  - apiVersion: v2
+    created: "2022-02-03T10:36:38.650865306Z"
+    description: A Helm chart for adding arbitry web app to k8s
+    digest: c8a0c6455fb1c0a37a2b507aaf5d271da8cda91325060fb5146019e97e7bb504
+    name: web-app
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/web-app-0.1.0/web-app-0.1.0.tgz
+    version: 0.1.0
 generated: "2022-02-02T07:44:29.3003065Z"
