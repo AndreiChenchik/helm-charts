@@ -231,6 +231,18 @@ entries:
     version: 0.0.6
   web-app:
   - apiVersion: v2
+    created: "2022-02-08T14:40:51.185792582Z"
+    dependencies:
+    - name: vaultlib
+      repository: https://helm.chenchik.me/
+      version: 0.0.6
+    description: A Helm chart for adding arbitry web app to k8s
+    digest: f65ef0192cabca45f5161d0014e0460562003742f738664dc5e83649340556c1
+    name: web-app
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/web-app-0.3.8/web-app-0.3.8.tgz
+    version: 0.3.8
+  - apiVersion: v2
     created: "2022-02-08T09:46:23.025962085Z"
     dependencies:
     - name: vault-lib
