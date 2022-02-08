@@ -3,11 +3,11 @@
 {{- end }}
 
 {{- define "vaultlib.unsealSecretShares" }}
-  {{- .Values.vault.server.unsealSecretShares | default 5 }}
+  {{- ((.Values.vault.server).unsealSecretShares) | default 5 }}
 {{- end }}
 
 {{- define "vaultlib.unsealSecretThreshold" }}
-  {{- .Values.vault.server.unsealSecretThreshold | default 3 }}
+  {{- ((.Values.vault.server).unsealSecretThreshold) | default 3 }}
 {{- end }}
 
 {{- define "vaultlib.kubectlVersion" }}
@@ -19,7 +19,7 @@
 {{- end }}
 
 {{- define "vaultlib.namespace" }}
-  {{- .Values.vault.server.namespace | default "vault" }}
+  {{- ((.Values.vault.server).namespace) | default "vault" }}
 {{- end }}
 
 {{- define "vaultlib.serviceAccount" }}
@@ -31,5 +31,5 @@
 {{- end }}
 
 {{- define "vaultlib.serverUrl" }}
-  {{- .Values.vault.server.url | default "https://vault.vault:8200" }}
+  {{- ((.Values.vault.server).url) | default "https://vault.vault:8200" }}
 {{- end }}
