@@ -31,5 +31,5 @@
 {{- end }}
 
 {{- define "vaultlib.serverUrl" }}
-  {{- ((.Values.vault.server).url) | default "https://vault.vault:8200" }}
+  {{- ((.Values.vault.server).url) | default "http://vault.vault:8200" }}
 {{- end }}
