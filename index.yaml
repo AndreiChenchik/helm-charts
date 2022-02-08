@@ -119,6 +119,16 @@ entries:
   vault-lib:
   - apiVersion: v2
     appVersion: 1.9.3
+    created: "2022-02-08T09:03:55.260470073Z"
+    description: A Helm chart with helpers for working with Vault
+    digest: 715db1a4a9d5bed74c262a13b0c9d8204c4dc6580d151adabb930a22b368a531
+    name: vault-lib
+    type: library
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-lib-0.0.3/vault-lib-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 1.9.3
     created: "2022-02-08T08:58:13.879292792Z"
     description: A Helm chart with helpers for working with Vault
     digest: 6644f0ac426eed8559527275b8c0f9e78a777da515d06e9e99b72fc10c6aab90
