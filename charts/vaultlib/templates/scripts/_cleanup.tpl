@@ -10,7 +10,7 @@ cleanup.sh: |-
 {{- end }}
 
 {{- define "vaultlib.cleanup.runner" }}
-- name: check-vault-cleanup
+- name: cleanup
   image: {{ include "vaultlib.clientImage" . | quote }}
   command: ['/bin/cleanup.sh']
   env:

@@ -1,5 +1,5 @@
 {{- define "vaultlib.vaultUnseal.script" }}
-check-vault-unseal.sh: |-
+vault-unseal.sh: |-
   #!/bin/ash
   apk --update add jq curl
   curl -o /usr/local/bin/kubectl -sLO "https://dl.k8s.io/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl"
@@ -17,9 +17,9 @@ check-vault-unseal.sh: |-
 {{- end }}
 
 {{- define "vaultlib.vaultUnseal.container" }}
-- name: check-vault-unseal
+- name: vault-unseal
   image: {{ include "vaultlib.clientImage" . | quote }}
-  command: ['/bin/check-vault-unseal.sh']
+  command: ['/bin/vault-unseal.sh']
   env:
     - name: VAULT_ADDR
       value: {{ include "vaultlib.serverUrl" . | quote }}
@@ -40,7 +40,7 @@ check-vault-unseal.sh: |-
           key: vault_secret_threshold
   volumeMounts:
     - name: scripts
-      mountPath: /bin/check-vault-unseal.sh
+      mountPath: /bin/vault-unseal.sh
       readOnly: true
-      subPath: check-vault-unseal.sh
+      subPath: vault-unseal.sh
 {{- end }}

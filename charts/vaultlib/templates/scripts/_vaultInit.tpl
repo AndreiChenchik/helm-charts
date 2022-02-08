@@ -40,7 +40,7 @@ vault-init.sh: |-
           key: vault_secret_threshold
   volumeMounts:
     - name: scripts
-      mountPath: /bin/check-vault-init.sh
+      mountPath: /bin/vault-init.sh
       readOnly: true
-      subPath: check-vault-init.sh
+      subPath: vault-init.sh
 {{- end }}
