@@ -1,5 +1,5 @@
 apiVersion: v2
-name: vault-bootstrap
+name: vault
 description: An umbrella Helm chart with a Vault instance which can be auto-activated
 type: application
 version: 0.0.9
