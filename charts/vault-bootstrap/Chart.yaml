@@ -2,11 +2,11 @@ apiVersion: v2
 name: vault-bootstrap
 description: An umbrella Helm chart with a Vault instance which can be auto-activated
 type: application
-version: 0.0.5
+version: 0.0.6
 dependencies:
   - name: vault
     version: "0.19.0"
     repository: "https://helm.releases.hashicorp.com"
   - name: vaultlib
-    version: "0.0.11"
+    version: "0.0.12"
     repository: "https://helm.chenchik.me/"
