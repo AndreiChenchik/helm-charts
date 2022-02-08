@@ -44,9 +44,10 @@ data:
   vault_secret_shares: {{ include "vaultlib.unsealSecretShares" . | quote }}
   vault_secret_threshold: {{ include "vaultlib.unsealSecretThreshold" . | quote }}
   kubectl_version: {{ include "vaultlib.kubectlVersion" . | quote }}
-  {{- include "vaultlib.checkVaultRunning.script" . | indent 2 }}
-  {{- include "vaultlib.vaultInit.script" . | indent 2 }}
-  {{- include "vaultlib.vaultUnseal.script" . | indent 2 }}
+  {{- include "vaultlib.checkVaultUp.script" . | indent 2 }}
+  {{- include "vaultlib.init.script" . | indent 2 }}
+  {{- include "vaultlib.unseal.script" . | indent 2 }}
+  {{- include "vaultlib.enableK8sAuth.script" . | indent 2 }}
   {{- include "vaultlib.cleanup.script" . | indent 2 }}
 ---
 apiVersion: batch/v1
@@ -60,12 +61,15 @@ spec:
     spec:
       serviceAccountName: {{ include "vaultlib.serviceAccount" . | quote }}
       initContainers:
-        {{- include "vaultlib.checkVaultRunning.container" . | indent 7 }}
+        {{- include "vaultlib.checkVaultUp.container" . | indent 7 }}
         {{- if .Values.vault.jobs.init }}
-          {{- include "vaultlib.vaultInit.container" . | indent 7 }}
+          {{- include "vaultlib.init.container" . | indent 7 }}
         {{- end }}
         {{- if .Values.vault.jobs.unseal }}
-          {{- include "vaultlib.vaultUnseal.container" . | indent 7 }}
+          {{- include "vaultlib.unseal.container" . | indent 7 }}
+        {{- end }}
+        {{- if .Values.vault.jobs.enableK8sAuth }}
+          {{- include "vaultlib.enableK8sAuth.container" . | indent 7 }}
         {{- end }}
       containers:
         {{- include "vaultlib.cleanup.runner" . | indent 7 }}

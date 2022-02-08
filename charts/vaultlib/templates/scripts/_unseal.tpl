@@ -1,4 +1,4 @@
-{{- define "vaultlib.vaultUnseal.script" }}
+{{- define "vaultlib.unseal.script" }}
 vault-unseal.sh: |-
   #!/bin/ash
   apk --update add jq curl
@@ -16,7 +16,7 @@ vault-unseal.sh: |-
   fi
 {{- end }}
 
-{{- define "vaultlib.vaultUnseal.container" }}
+{{- define "vaultlib.unseal.container" }}
 - name: vault-unseal
   image: {{ include "vaultlib.clientImage" . | quote }}
   command: ['/bin/vault-unseal.sh']

@@ -1,4 +1,4 @@
-{{- define "vaultlib.checkVaultRunning.script" }}
+{{- define "vaultlib.checkVaultUp.script" }}
 check-vault-running.sh: |-
   #!/bin/ash
   for attempt in `seq 15`; do
@@ -18,7 +18,7 @@ check-vault-running.sh: |-
   done
 {{- end }}
 
-{{- define "vaultlib.checkVaultRunning.container" }}
+{{- define "vaultlib.checkVaultUp.container" }}
 - name: check-vault-running
   image: {{ include "vaultlib.clientImage" . | quote }}
   command: ["/bin/check-vault-running.sh"]

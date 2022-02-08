@@ -1,4 +1,4 @@
-{{- define "vaultlib.vaultInit.script" }}
+{{- define "vaultlib.init.script" }}
 vault-init.sh: |-
   #!/bin/ash
   apk --update add jq curl
@@ -16,7 +16,7 @@ vault-init.sh: |-
   fi
 {{- end }}
 
-{{- define "vaultlib.vaultInit.container" }}
+{{- define "vaultlib.init.container" }}
 - name: vault-init
   image: {{ include "vaultlib.clientImage" . | quote }}
   command: ['/bin/vault-init.sh']
