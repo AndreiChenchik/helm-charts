@@ -22,7 +22,7 @@ vault-init.sh: |-
   command: ['/bin/vault-init.sh']
   env:
     - name: VAULT_ADDR
-      value: "{{ .Values.vault_address }}"
+      value: {{ include "vaultlib.serverUrl" . | quote }}
     - name: KUBECTL_VERSION
       valueFrom:
         configMapKeyRef:

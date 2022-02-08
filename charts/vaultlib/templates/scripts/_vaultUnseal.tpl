@@ -22,7 +22,7 @@ check-vault-unseal.sh: |-
   command: ['/bin/check-vault-unseal.sh']
   env:
     - name: VAULT_ADDR
-      value: "{{ .Values.vault.server.url }}"
+      value: {{ include "vaultlib.serverUrl" . | quote }}
     - name: KUBECTL_VERSION
       valueFrom:
         configMapKeyRef:

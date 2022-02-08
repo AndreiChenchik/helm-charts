@@ -24,7 +24,7 @@ check-vault-running.sh: |-
   command: ["/bin/check-vault-running.sh"]
   env:
     - name: VAULT_ADDR
-      value: "{{ .Values.vault.server.url }}"
+      value: {{ include "vaultlib.serverUrl" . | quote }}
   volumeMounts:
     - name: scripts
       mountPath: /bin/check-vault-running.sh

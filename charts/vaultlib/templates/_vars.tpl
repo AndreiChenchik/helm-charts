@@ -29,3 +29,7 @@
 {{- define "vaultlib.jobName" }}
   {{- .Release.Name }}-vaultlib-job
 {{- end }}
+
+{{- define "vaultlib.serverUrl" }}
+  {{- .Values.vault.server.url | default "https://vault.vault:8200" }}
+{{- end }}
