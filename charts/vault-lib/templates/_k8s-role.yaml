@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: "{{ .Release.Name }}-k8s-role-config"
-  namespace: "{{ .Values.vault.server.namespace }}"
+  namespace: "{{ .Values.vault.server.namespace | default "vault" }}"
 data:
   check-vault-running.sh: |-
     #!/bin/ash
@@ -27,14 +27,14 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: "{{ .Release.Name }}-k8s-role"
-  namespace: "{{ .Values.vault.server.namespace }}"
+  namespace: "{{ .Values.vault.server.namespace | default "vault" }}"
 spec:
   backoffLimit: 0
   template:
     spec:
       initContainers:
         - name: check-vault-running
-          image: "{{ ((.Values.vault.client).repository) | default "vault" }}:{{ ((.Values.vault.client).version) | default .Chart.AppVersion }}"
+          image: "{{ ((.Values.vault.client).repository) | default "vault" }}:{{ ((.Values.vault.client).version) | default (index .Subcharts "vault-lib").Chart.Metadata.AppVersion }}"
           command: ["/bin/check-vault-running.sh"]
           env:
             - name: VAULT_ADDR
@@ -46,12 +46,12 @@ spec:
               subPath: check-vault-running.sh
       containers:
         - name: do-vault-init
-          image: "{{ ((.Values.vault.client).repository) | default "vault" }}:{{ ((.Values.vault.client).version) | default index .Subcharts "vault-lib" "Chart" "AppVersion" }}"
+          image: "{{ ((.Values.vault.client).repository) | default "vault" }}:{{ ((.Values.vault.client).version) | default (index .Subcharts "vault-lib").Chart.Metadata.AppVersion }}"
           command: ["/bin/check-vault-running.sh"]
           env:
             - name: VAULT_ADDR
               value: "{{ .Values.vault.server.url }}"
-            {{- if .Values.vault.server.token.secretName }}
+            {{- if ((.Values.vault.server.token).secretName) }}
             - name: VAULT_TOKEN
               valueFrom:
                 secretKeyRef:
