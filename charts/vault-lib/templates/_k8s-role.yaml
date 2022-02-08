@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: "{{ .Release.Name }}-k8s-role-config"
-  namespace: "{{ .server.namespace }}"
+  namespace: "{{ .Values.vault.server.namespace }}"
 data:
   check-vault-running.sh: |-
     #!/bin/ash
@@ -27,18 +27,18 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: "{{ .Release.Name }}-k8s-role"
-  namespace: "{{ .server.namespace }}"
+  namespace: "{{ .Values.vault.server.namespace }}"
 spec:
   backoffLimit: 0
   template:
     spec:
       initContainers:
         - name: check-vault-running
-          image: "{{ .client.repository | default "vault" }}:{{ .client.version | default .Chart.AppVersion }}"
+          image: "{{ .Values.vault.client.repository | default "vault" }}:{{ .Values.vault.client.version | default .Chart.AppVersion }}"
           command: ["/bin/check-vault-running.sh"]
           env:
             - name: VAULT_ADDR
-              value: "{{ .server.url }}"
+              value: "{{ .Values.vault.server.url }}"
           volumeMounts:
             - name: scripts
               mountPath: /bin/check-vault-running.sh
@@ -46,17 +46,17 @@ spec:
               subPath: check-vault-running.sh
       containers:
         - name: do-vault-init
-          image: "{{ .client.repository | default "vault" }}:{{ .client.version | default .Chart.AppVersion }}"
+          image: "{{ .Values.vault.client.repository | default "vault" }}:{{ .Values.vault.client.version | default .Subcharts."vault-lib".Chart.AppVersion }}"
           command: ["/bin/check-vault-running.sh"]
           env:
             - name: VAULT_ADDR
-              value: "{{ .server.url }}"
-            {{- if .server.token.secretName }}
+              value: "{{ .Values.vault.server.url }}"
+            {{- if .Values.vault.server.token.secretName }}
             - name: VAULT_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: {{ .server.token.secretName }}
-                  key: {{ .server.token.secretKey }}
+                  name: {{ .Values.vault.server.token.secretName }}
+                  key: {{ .Values.vault.server.token.secretKey }}
             {{- end }}
           volumeMounts:
             - name: scripts
