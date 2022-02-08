@@ -1,0 +1,3 @@
+{{- if .Values.jobs.vault-k8s-role }}
+{{- include "vault-lib.k8s-role-job" .Values.vault -}}
+{{- end }}

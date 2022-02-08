@@ -1,13 +1,8 @@
 apiVersion: v2
 name: web-app
 description: A Helm chart for adding arbitry web app to k8s
-version: 0.3.5
+version: 0.3.6
 dependencies:
-  - name: vault-k8s-role
-    version: "0.1.2"
-    condition: jobs.vault-k8s-role
-    repository: "https://chenchik.me/helm-charts"
-  - name: vault-policy
-    version: "0.1.1"
-    condition: jobs.vault-policy
+  - name: vault-lib
+    version: "0.0.1"
     repository: "https://chenchik.me/helm-charts"
