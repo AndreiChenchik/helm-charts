@@ -18,9 +18,9 @@ check-vault-running.sh: |-
   done
 {{- end }}
 
-{{- define "vaultlib.checkVaultRunning.runner" }}
+{{- define "vaultlib.checkVaultRunning.container" }}
 - name: check-vault-running
-  image: "{{- include "vaultlib.clientImage" . }}"
+  image: {{ include "vaultlib.clientImage" . | quote }}
   command: ["/bin/check-vault-running.sh"]
   env:
     - name: VAULT_ADDR
