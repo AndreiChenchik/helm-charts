@@ -34,5 +34,6 @@ vault:
       # - names of fields in vault to inject as envs
 
 jobs:
-  vault-k8s-role: false
-  vault-policy: false
+  vault:
+    k8sRoleCheck: false
+    policyCheck: false
