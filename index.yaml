@@ -116,6 +116,17 @@ entries:
     urls:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-k8s-role-0.0.3/vault-k8s-role-0.0.3.tgz
     version: 0.0.3
+  vault-lib:
+  - apiVersion: v2
+    appVersion: 1.9.3
+    created: "2022-02-08T08:02:29.269293598Z"
+    description: A Helm chart with helpers for working with Vault
+    digest: bdbf4b1d115bf0e487dc8d6987404da292a309fd5850e16960dfbee0ad9417ec
+    name: vault-lib
+    type: library
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-lib-0.0.1/vault-lib-0.0.1.tgz
+    version: 0.0.1
   vault-policy:
   - apiVersion: v2
     appVersion: 1.9.3
