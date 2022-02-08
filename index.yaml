@@ -21,6 +21,22 @@ entries:
     version: 0.0.1
   vault-bootstrap:
   - apiVersion: v2
+    created: "2022-02-08T17:47:36.088819866Z"
+    dependencies:
+    - name: vault
+      repository: https://helm.releases.hashicorp.com
+      version: 0.19.0
+    - name: vaultlib
+      repository: https://helm.chenchik.me/
+      version: 0.0.14
+    description: An umbrella Helm chart with a Vault instance which can be auto-activated
+    digest: b2ddd817bb2c386c9f9a1723fcc0597c88a7dda6fed9c23a513349f9c6eb8540
+    name: vault-bootstrap
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-bootstrap-0.0.8/vault-bootstrap-0.0.8.tgz
+    version: 0.0.8
+  - apiVersion: v2
     created: "2022-02-08T17:32:16.982525204Z"
     dependencies:
     - name: vault
