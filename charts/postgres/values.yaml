@@ -9,6 +9,14 @@ vault:
     configure:
       configureInjectRole: true
       spawnRandomSecrets: true
+      spawnPolicies: true
+
+    policies: |
+      [{  "name": "postgres-inject",
+          "policy": { "path": { "secrets/db": {
+            "capabilities": [ "read" ]
+          }}}
+      }]
 
     randomSecrets: |
       [{  "path": "secrets/db",
@@ -20,3 +28,4 @@ vault:
       toFiles: true
       pathToSecret: "db"
       mountPath: /secrets
+      policy: postgres-inject
