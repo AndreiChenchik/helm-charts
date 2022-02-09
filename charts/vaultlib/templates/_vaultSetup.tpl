@@ -61,6 +61,7 @@ data:
 
   {{- if .Values.vault.jobs.configureK8sRole }}
   vault_role: {{ include "vaultlib.appRole" . | quote }}
+  vault_policy: {{ include "vaultlib.appPolicy" . | quote }}
   vault_serviceaccount: {{ include "vaultlib.appSA" . | quote }}
   vault_serviceaccount_namespace: {{ include "vaultlib.appSANamespace" . | quote }}
     {{- include "vaultlib.configureK8sRole.script" . | indent 2 }}

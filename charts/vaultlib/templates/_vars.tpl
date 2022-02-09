@@ -45,3 +45,8 @@
 {{- define "vaultlib.appSANamespace" }}
   {{- (((.Values.vault.app).serviceAccount).namespace) | default .Release.Namespace }}
 {{- end }}
+
+{{- define "vaultlib.appPolicy" }}
+  {{- ((.Values.vault.app).vaultPolicy) | default .Release.Name }}
+{{- end }}
+
