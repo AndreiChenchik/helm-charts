@@ -52,7 +52,7 @@ configure-k8s-role.sh: |-
 {{- end }}
 
 {{- define "vaultlib.configureK8sRole.container" }}
-- name: enable-k8s-auth
+- name: configure-k8s-role
   image: {{ include "vaultlib.clientImage" . | quote }}
   command: ['/bin/configure-k8s-role.sh']
   env:
