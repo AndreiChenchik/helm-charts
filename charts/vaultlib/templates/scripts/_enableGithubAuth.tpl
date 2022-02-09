@@ -18,7 +18,7 @@ enable-github-auth.sh: |
     vault write auth/github/config organization=$GITHUB_ORG
   fi
 
-  jq -c '.[]' /conf/team-policies.json | while read $team_policy; do
+  jq -c '.[]' /conf/team-policies.json | while read team_policy; do
     team_name=$(echo $team_policy | jq -r '.team')
     policy_name=$(echo $team_policy | jq -r '.policy')
 

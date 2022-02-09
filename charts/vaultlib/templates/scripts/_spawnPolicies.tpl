@@ -9,11 +9,11 @@ spawn-policies.sh: |
   
   export VAULT_TOKEN=$(kubectl get secret vault-unseal-root-token -n vault -o json | jq -r '.data.root_token | @base64d')
 
-  jq -c '.[]' /conf/policies.json | while read $team_policy; do
-    policy_name=$(echo $team_policy | jq -r '.name')
-    policy_data=$(echo $team_policy | jq -cr '.policy')
+  jq -c '.[]' /conf/policies.json | while read policy; do
+    policy_name=$(echo $policy | jq -r '.name')
+    policy_config=$(echo $policy | jq -cr '.policy')
 
-    echo "{$policy_data}" | vault policy write $policy_name -
+    echo "$policy_config" | vault policy write $policy_name -
   done
 
   echo "POLICIES SEEMS TO BE SPAWNED"
