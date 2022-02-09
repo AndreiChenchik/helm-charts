@@ -1,0 +1,1 @@
+{{- include "vaultlib.apply" . }}

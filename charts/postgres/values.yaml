@@ -3,5 +3,20 @@ name: postgres
 image:
   repository: postgres
   pullPolicy: IfNotPresent
-# vaultSecrets:
-#   enable: true
+
+vault:
+  server:
+    configure:
+      configureInjectRole: true
+      spawnRandomSecrets: true
+
+    randomSecrets: |
+      [{  "path": "secrets/db",
+          "keys": [ "POSTGRES_PASSWORD" ]
+      }]
+
+  app:
+    injectSecrets:
+      toFiles: true
+      pathToSecret: "db"
+      mountPath: /secrets
