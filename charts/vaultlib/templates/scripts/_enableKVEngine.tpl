@@ -40,7 +40,7 @@ enable-kv-engine.sh: |-
 {{- define "vaultlib.enableKVEngine.container" }}
 - name: enable-kv-engine
   image: {{ include "vaultlib.clientImage" . | quote }}
-  command: ['/bin/configure-k8s-role.sh']
+  command: ['/bin/enable-kv-engine.sh']
   env:
     - name: VAULT_ADDR
       value: {{ include "vaultlib.serverUrl" . | quote }}
