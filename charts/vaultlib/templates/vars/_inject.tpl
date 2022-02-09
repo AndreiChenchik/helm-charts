@@ -1,17 +1,21 @@
+{{- define "vaultlib.inject.defaultResourceName" }}
+  {{- (print .Release.Name "-vaultlib-inject") }}
+{{- end }}
+
 {{- define "vaultlib.inject.serviceAccount" }}
-  {{- .Values.vault.app.injectSecrets.serviceAccount | default (print .Release.Name "-injectSecrets") }}
+  {{- .Values.vault.app.injectSecrets.serviceAccount | default (include "vaultlib.inject.defaultResourceName" . ) }}
 {{- end }}
 
 {{- define "vaultlib.inject.policy" }}
-  {{- .Values.vault.app.injectSecrets.policy | default (print .Release.Name "-injectSecrets") }}
+  {{- .Values.vault.app.injectSecrets.policy | default (include "vaultlib.inject.defaultResourceName" . ) }}
 {{- end }}
 
 {{- define "vaultlib.inject.role" }}
-  {{- .Values.vault.app.injectSecrets.role | default (print .Release.Name "-injectSecrets") }}
+  {{- .Values.vault.app.injectSecrets.role | default (include "vaultlib.inject.defaultResourceName" . ) }}
 {{- end }}
 
 {{- define "vaultlib.inject.secretName" }}
-  {{- .Release.Name }}-injectSecret
+  {{- include "vaultlib.inject.defaultResourceName" . }}
 {{- end }}
 
 {{- define "vaultlib.inject.fullPathToSecret" }}
