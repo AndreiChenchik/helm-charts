@@ -66,6 +66,9 @@ data:
   {{- if .Values.vault.jobs.spawnPolicies }}
     {{- include "vaultlib.spawnPolicies.config" . | indent 2 }}
   {{- end }}
+  {{- if .Values.vault.jobs.spawnRandomSecrets }}
+    {{- include "vaultlib.spawnRandomSecrets.config" . | indent 2 }}
+  {{- end }}
   {{- include "vaultlib.cleanup.config" . | indent 2 }}
 ---
 apiVersion: batch/v1
@@ -103,6 +106,9 @@ spec:
         {{- end }}
         {{- if .Values.vault.jobs.spawnPolicies }}
           {{- include "vaultlib.spawnPolicies.container" . | indent 7 }}
+        {{- end }}
+        {{- if .Values.vault.jobs.spawnRandomSecrets }}
+          {{- include "vaultlib.spawnRandomSecrets.container" . | indent 7 }}
         {{- end }}
       containers:
         {{- include "vaultlib.cleanup.container" . | indent 7 }}
