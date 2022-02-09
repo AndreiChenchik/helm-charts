@@ -3,6 +3,20 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: "14.1"
+    created: "2022-02-09T23:34:33.866168198Z"
+    dependencies:
+    - name: vaultlib
+      repository: https://helm.chenchik.me/
+      version: 0.0.36
+    description: A Helm chart for Postgres with Vault secret
+    digest: f72947d98a0667989eb38ef1971e07c01ea173943d27f50d939c36b92cd555b0
+    name: postgres
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/postgres-0.0.8/postgres-0.0.8.tgz
+    version: 0.0.8
+  - apiVersion: v2
+    appVersion: "14.1"
     created: "2022-02-09T23:18:53.858757456Z"
     dependencies:
     - name: vaultlib
