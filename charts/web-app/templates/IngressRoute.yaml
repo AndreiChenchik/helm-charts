@@ -1,23 +1,19 @@
 {{- if .Values.ingressHost }}
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
-
 metadata:
   name: "{{ .Release.Name }}"
   namespace: "{{ .Release.Namespace }}"
-
 spec:
   entryPoints:
     - websecure
-
   routes:
     - kind: Rule
       match: Host(`{{.Values.ingressHost}}`)
-
       services:
         - name: "{{ .Release.Name }}"
           port: {{ .Values.service.servicePort }}
-
   tls:
     certResolver: acme-http
 {{- end }}
