@@ -50,3 +50,6 @@
   {{- ((.Values.vault.app).vaultPolicy) | default .Release.Name }}
 {{- end }}
 
+{{- define "vaultlib.kvEndpoint" }}
+  {{- ((.Values.vault.server).kvEndpoint) | default "secrets" }}
+{{- end }}

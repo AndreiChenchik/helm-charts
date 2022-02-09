@@ -59,6 +59,11 @@ data:
     {{- include "vaultlib.enableK8sAuth.script" . | indent 2 }}
   {{- end }}
 
+  {{- if .Values.vault.jobs.enableKVEngine }}
+  vault_kv_endpoint: {{ include "vaultlib.kvEndpoint" . | quote }}
+    {{- include "vaultlib.enableKVEngine.script" . | indent 2 }}
+  {{- end }}
+
   {{- if .Values.vault.jobs.configureK8sRole }}
   vault_role: {{ include "vaultlib.appRole" . | quote }}
   vault_policy: {{ include "vaultlib.appPolicy" . | quote }}
@@ -92,6 +97,9 @@ spec:
         {{- end }}
         {{- if .Values.vault.jobs.enableK8sAuth }}
           {{- include "vaultlib.enableK8sAuth.container" . | indent 7 }}
+        {{- end }}
+        {{- if .Values.vault.jobs.enableKVEngine }}
+          {{- include "vaultlib.enableKVEngine.container" . | indent 7 }}
         {{- end }}
         {{- if .Values.vault.jobs.configureK8sRole }}
           {{- include "vaultlib.configureK8sRole.container" . | indent 7 }}
