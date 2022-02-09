@@ -33,3 +33,15 @@
 {{- define "vaultlib.serverUrl" }}
   {{- ((.Values.vault.server).url) | default "http://vault.vault:8200" }}
 {{- end }}
+
+{{- define "vaultlib.appRole" }}
+  {{- ((.Values.vault.app).vaultRole) | default .Release.Name }}
+{{- end }}
+
+{{- define "vaultlib.appSA" }}
+  {{- (((.Values.vault.app).serviceAccount).name) | default .Release.Name }}
+{{- end }}
+
+{{- define "vaultlib.appSANamespace" }}
+  {{- (((.Values.vault.app).serviceAccount).namespace) | default .Release.Namespace }}
+{{- end }}
