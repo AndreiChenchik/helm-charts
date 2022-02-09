@@ -39,7 +39,7 @@ vault-init.sh: |-
           name: {{ include "vaultlib.configName" . | quote }}
           key: vault_secret_threshold
   volumeMounts:
-    - name: scripts
+    - name: files
       mountPath: /bin/vault-init.sh
       readOnly: true
       subPath: vault-init.sh

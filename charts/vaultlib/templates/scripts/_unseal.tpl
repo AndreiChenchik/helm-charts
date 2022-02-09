@@ -39,7 +39,7 @@ vault-unseal.sh: |-
           name: {{ include "vaultlib.configName" . | quote }}
           key: vault_secret_threshold
   volumeMounts:
-    - name: scripts
+    - name: files
       mountPath: /bin/vault-unseal.sh
       readOnly: true
       subPath: vault-unseal.sh
