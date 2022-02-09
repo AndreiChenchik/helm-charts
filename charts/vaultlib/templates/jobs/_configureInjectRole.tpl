@@ -37,6 +37,8 @@ configure-k8s-role.sh: |-
     
     vault write auth/kubernetes/role/$VAULT_ROLE @$tmpfile/updated_role.json
   fi
+  
+  sleep 5
 
   role=$(vault read auth/kubernetes/role/$VAULT_ROLE -format=json \
     | jq -r '.data 

@@ -7,9 +7,9 @@
     {{- include "vaultlib.configure.Job" . }}
   {{- end -}}
 
-  {{- if or (((.Values.vault).injectSecrets).toEnv) (((.Values.vault).injectSecrets).toFiles) }}
+  {{- if or ((((.Values.vault).app).injectSecrets).toEnv) ((((.Values.vault).app).injectSecrets).toFiles) }}
     {{- include "vaultlib.inject.ServiceAccount" . }}
-    {{- if (((.Values.vault).injectSecrets).toEnv) }}
+    {{- if ((((.Values.vault).app).injectSecrets).toEnv) }}
       {{- include "vaultlib.inject.SecretStore" . }}
       {{- include "vaultlib.inject.ExternalSecret" . }}
     {{- end -}}
