@@ -3,7 +3,7 @@
 vault.hashicorp.com/agent-inject: "true"
 vault.hashicorp.com/agent-inject-status: "update"
 vault.hashicorp.com/role: {{ include "vaultlib.inject.role" . | quote }}
-vault.hashicorp.com/agent-inject-secret-spawn: 
+vault.hashicorp.com/agent-inject-secret-spawn: {{ include "vaultlib.inject.fullPathToSecret" . }}
 vault.hashicorp.com/secret-volume-path-spawn: {{ include "vaultlib.inject.mountPath" . | quote }}
 vault.hashicorp.com/agent-inject-template-spawn: |
   {{- `
