@@ -9,7 +9,7 @@ enable-kv-engine.sh: |-
   
   kv_endpoint=$(vault secrets list -format=json \
     | jq -r 'to_entries[]
-        | select((.value.type=="kv") and (.key=$kv_path))
+        | select((.value.type=="kv") and (.key==$kv_path))
       ' \
       --arg kv_path "$KV_ENDPOINT/"
   )
@@ -23,7 +23,7 @@ enable-kv-engine.sh: |-
 
   kv_endpoint=$(vault secrets list -format=json \
     | jq -r 'to_entries[]
-        | select((.value.type=="kv") and (.key=$kv_path))
+        | select((.value.type=="kv") and (.key==$kv_path))
       ' \
       --arg kv_path "$KV_ENDPOINT/"
   )
