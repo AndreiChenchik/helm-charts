@@ -13,7 +13,7 @@ vault:
 
     policies: |
       [{  "name": "postgres-inject",
-          "policy": { "path": { "secrets/db": {
+          "policy": { "path": { "secrets/data/db": {
             "capabilities": [ "read" ]
           }}}
       }]
