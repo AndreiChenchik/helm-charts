@@ -1,8 +1,39 @@
+# ingressHost: hello.enableops.io
+
 image:
   repository: containous/whoami
   pullPolicy: IfNotPresent
   tag: latest
+  # pullSecret: secret-for-private-repo
 
 service:
   targetPort: 8000
   servicePort: 80
+
+# config:
+#    ENV_VAR: env_value
+
+# envSecrets: any secret to use as for environment variables
+
+vault:
+  server:
+    kvEndpoint: "kv"
+    url: "http://vault.vault:8200"
+
+  # vaultRole: <defaults to .name>
+
+  secretPath: "secret"
+
+  mountSecret:
+    enabled: false
+    # path: "/where/to/mount"
+
+  envSecret:
+    enabled: false
+    fields:
+      # - names of fields in vault to inject as envs
+
+jobs:
+  vault:
+    k8sRoleCheck: false
+    policyCheck: false

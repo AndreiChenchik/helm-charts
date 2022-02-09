@@ -1,40 +1,77 @@
----
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: "{{ .Release.Name }}"
   namespace: "{{ .Release.Namespace }}"
+
 spec:
   replicas: 1
   revisionHistoryLimit: 2
+
   selector:
     matchLabels:
       app: "{{ .Release.Name }}"
+
   template:
     metadata:
       labels:
         app: "{{ .Release.Name }}"
+
+      {{- if .Values.vault.mountSecret.enabled }}
       annotations:
-        {{ include "vaultlib.inject.Annotations" . | indent 8 }}
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/agent-inject-status: "update"
+        vault.hashicorp.com/role: {{ .Values.vault.role | default .Release.Name }}
+        vault.hashicorp.com/agent-inject-secret-spawn: "{{ .Values.vault.server.kvEndpoint }}/{{ .Values.vault.secretPath }}"
+        vault.hashicorp.com/secret-volume-path-spawn: "{{ .Values.vault.mountSecret.path }}"
+        vault.hashicorp.com/agent-inject-template-spawn: |
+          {{- `
+          {{- with secret "`}}{{ .Values.vault.server.kvEndpoint }}/data/{{ .Values.vault.secretPath }}{{`" -}}
+          {{- range $k, $v := .Data.data }}
+          echo {{ $v }} > `}}{{ .Values.vault.mountSecret.path }}{{`/{{ $k }}
+          {{- end }}{{ end }}
+          rm `}}{{ .Values.vault.mountSecret.path }}{{`/spawn
+          `}}
+        vault.hashicorp.com/agent-inject-command-spawn: "cat {{ .Values.vault.mountSecret.path }}/spawn | sh --"
+      {{- end }}
+    
     spec:
-      {{ include "vaultlib.inject.serviceAccountName" . | indent 6 }}
+      {{- if or .Values.vault.mountSecret.enabled .Values.vault.envSecret.enabled }}
+      serviceAccountName: "{{ .Release.Name }}"
+      {{- end }}
+
       {{- if .Values.image.pullSecret }}
       imagePullSecrets:
         - name: {{ .Values.image.pullSecret }}
       {{- end }}
+
       containers:
         - name: "{{ .Release.Name }}"
+
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{.Values.image.pullPolicy}}
+
           ports:
             - containerPort: {{ .Values.service.targetPort }}
-          envFrom:  
-            {{ include "vaultlib.inject.envFrom" . | indent 12 }}
+
+          {{- if or .Values.config .Values.envSecrets .Values.vault.envSecret.enabled }}
+          envFrom:
+            
             {{- if .Values.config }}
             - configMapRef:
                 name: "{{ .Release.Name }}"
             {{- end}}
+            
+            {{- if .Values.vault.envSecret.enabled }}
+            - secretRef:
+                name: {{ .Release.Name }}-vault-secret
+            {{- end}}            
+            
             {{- if .Values.envSecrets }}
             - secretRef:
                 name: {{ .Values.envSecrets }}
             {{- end }}
+
+          {{- end }}
+      
