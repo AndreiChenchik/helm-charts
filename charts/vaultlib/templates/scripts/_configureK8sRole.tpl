@@ -29,7 +29,7 @@ configure-k8s-role.sh: |-
         --arg sa_name "$VAULT_SA" \
         --arg sa_namespace "$VAULT_SA_NAMESPACE" \
         --arg policy "$VAULT_POLICY" \
-        | > $tmpfile/updated_role.json
+        | tee > $tmpfile/updated_role.json
     
     vault write auth/kubernetes/role/$VAULT_ROLE @$tmpfile/updated_role.json
   fi
