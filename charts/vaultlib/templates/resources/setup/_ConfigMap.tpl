@@ -25,8 +25,8 @@ data:
   {{- if .Values.vault.server.configure.enableKVEngine }}
     {{- include "vaultlib.enableKVEngine.config" . | indent 2 }}
   {{- end }}
-  {{- if .Values.vault.server.configure.configureK8sRole }}
-    {{- include "vaultlib.configureK8sRole.config" . | indent 2 }}
+  {{- if .Values.vault.server.configure.configureInjectRole }}
+    {{- include "vaultlib.configureInjectRole.config" . | indent 2 }}
   {{- end }}
   {{- if .Values.vault.server.configure.spawnPolicies }}
     {{- include "vaultlib.spawnPolicies.config" . | indent 2 }}

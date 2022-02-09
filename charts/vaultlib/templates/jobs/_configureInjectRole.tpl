@@ -1,25 +1,8 @@
-{{- define "vaultlib.appRole" }}
-  {{- ((.Values.vault.app).vaultRole) | default .Release.Name }}
-{{- end }}
-
-{{- define "vaultlib.appPolicy" }}
-  {{- ((.Values.vault.app).vaultPolicy) | default .Release.Name }}
-{{- end }}
-
-{{- define "vaultlib.appSA" }}
-  {{- (((.Values.vault.app).serviceAccount).name) | default .Release.Name }}
-{{- end }}
-
-{{- define "vaultlib.appSANamespace" }}
-  {{- (((.Values.vault.app).serviceAccount).namespace) | default .Release.Namespace }}
-{{- end }}
-
-
-{{- define "vaultlib.configureK8sRole.config" }}
-vault_role: {{ include "vaultlib.appRole" . | quote }}
-vault_policy: {{ include "vaultlib.appPolicy" . | quote }}
-vault_serviceaccount: {{ include "vaultlib.appSA" . | quote }}
-vault_serviceaccount_namespace: {{ include "vaultlib.appSANamespace" . | quote }}
+{{- define "vaultlib.configureInjectRole.config" }}
+vault_role: {{ include "vaultlib.inject.role" . | quote }}
+vault_policy: {{ include "vaultlib.inject.policy" . | quote }}
+vault_serviceaccount: {{ include "vaultlib.inject.serviceAccount" . | quote }}
+vault_serviceaccount_namespace: {{ .Release.Namespace }}
 configure-k8s-role.sh: |-
   #!/bin/ash
   apk --update add jq curl
@@ -75,7 +58,7 @@ configure-k8s-role.sh: |-
   exit 1                                                                   
 {{- end }}
 
-{{- define "vaultlib.configureK8sRole.container" }}
+{{- define "vaultlib.configureInjectRole.container" }}
 - name: configure-k8s-role
   image: {{ include "vaultlib.configure.container.image" . | quote }}
   command: ['/bin/configure-k8s-role.sh']

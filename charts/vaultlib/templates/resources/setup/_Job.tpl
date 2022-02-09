@@ -30,8 +30,8 @@ spec:
         {{- if .Values.vault.server.configure.enableKVEngine }}
           {{- include "vaultlib.enableKVEngine.container" . | indent 7 }}
         {{- end }}
-        {{- if .Values.vault.server.configure.configureK8sRole }}
-          {{- include "vaultlib.configureK8sRole.container" . | indent 7 }}
+        {{- if .Values.vault.server.configure.configureInjectRole }}
+          {{- include "vaultlib.configureInjectRole.container" . | indent 7 }}
         {{- end }}
         {{- if .Values.vault.server.configure.spawnPolicies }}
           {{- include "vaultlib.spawnPolicies.container" . | indent 7 }}
