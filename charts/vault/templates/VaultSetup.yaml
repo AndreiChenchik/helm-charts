@@ -1,3 +1,0 @@
-{{- if or .Values.vault.jobs.init .Values.vault.jobs.unseal }}
-  {{- include "vaultlib.vaultSetup" . }}
-{{- end }}
