@@ -1,4 +1,4 @@
-{{- define "vaultlib.checkVaultUp.script" }}
+{{- define "vaultlib.checkVaultUp.config" }}
 check-vault-running.sh: |-
   #!/bin/ash
   for attempt in `seq 15`; do
@@ -26,7 +26,7 @@ check-vault-running.sh: |-
     - name: VAULT_ADDR
       value: {{ include "vaultlib.serverUrl" . | quote }}
   volumeMounts:
-    - name: scripts
+    - name: files
       mountPath: /bin/check-vault-running.sh
       readOnly: true
       subPath: check-vault-running.sh

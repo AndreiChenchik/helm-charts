@@ -34,22 +34,10 @@
   {{- ((.Values.vault.server).url) | default "http://vault.vault:8200" }}
 {{- end }}
 
-{{- define "vaultlib.appRole" }}
-  {{- ((.Values.vault.app).vaultRole) | default .Release.Name }}
-{{- end }}
-
-{{- define "vaultlib.appSA" }}
-  {{- (((.Values.vault.app).serviceAccount).name) | default .Release.Name }}
-{{- end }}
-
-{{- define "vaultlib.appSANamespace" }}
-  {{- (((.Values.vault.app).serviceAccount).namespace) | default .Release.Namespace }}
-{{- end }}
-
-{{- define "vaultlib.appPolicy" }}
-  {{- ((.Values.vault.app).vaultPolicy) | default .Release.Name }}
-{{- end }}
-
 {{- define "vaultlib.kvEndpoint" }}
   {{- ((.Values.vault.server).kvEndpoint) | default "secrets" }}
+{{- end }}
+
+{{- define "vaultlib.githubOrg" }}
+  {{- .Values.vault.server.github.org }}
 {{- end }}

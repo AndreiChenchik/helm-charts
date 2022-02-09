@@ -1,4 +1,5 @@
-{{- define "vaultlib.enableKVEngine.script" }}
+{{- define "vaultlib.enableKVEngine.config" }}
+vault_kv_endpoint: {{ include "vaultlib.kvEndpoint" . | quote }}
 enable-kv-engine.sh: |-
   #!/bin/ash
   apk --update add jq curl
@@ -55,7 +56,7 @@ enable-kv-engine.sh: |-
           name: {{ include "vaultlib.configName" . | quote }}
           key: vault_kv_endpoint
   volumeMounts:
-    - name: scripts
+    - name: files
       mountPath: /bin/enable-kv-engine.sh
       readOnly: true
       subPath: enable-kv-engine.sh

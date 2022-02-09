@@ -1,4 +1,4 @@
-{{- define "vaultlib.init.script" }}
+{{- define "vaultlib.init.config" }}
 vault-init.sh: |-
   #!/bin/ash
   apk --update add jq curl

@@ -1,4 +1,25 @@
-{{- define "vaultlib.configureK8sRole.script" }}
+{{- define "vaultlib.appRole" }}
+  {{- ((.Values.vault.app).vaultRole) | default .Release.Name }}
+{{- end }}
+
+{{- define "vaultlib.appPolicy" }}
+  {{- ((.Values.vault.app).vaultPolicy) | default .Release.Name }}
+{{- end }}
+
+{{- define "vaultlib.appSA" }}
+  {{- (((.Values.vault.app).serviceAccount).name) | default .Release.Name }}
+{{- end }}
+
+{{- define "vaultlib.appSANamespace" }}
+  {{- (((.Values.vault.app).serviceAccount).namespace) | default .Release.Namespace }}
+{{- end }}
+
+
+{{- define "vaultlib.configureK8sRole.config" }}
+vault_role: {{ include "vaultlib.appRole" . | quote }}
+vault_policy: {{ include "vaultlib.appPolicy" . | quote }}
+vault_serviceaccount: {{ include "vaultlib.appSA" . | quote }}
+vault_serviceaccount_namespace: {{ include "vaultlib.appSANamespace" . | quote }}
 configure-k8s-role.sh: |-
   #!/bin/ash
   apk --update add jq curl
@@ -87,7 +108,7 @@ configure-k8s-role.sh: |-
           name: {{ include "vaultlib.configName" . | quote }}
           key: vault_serviceaccount_namespace
   volumeMounts:
-    - name: scripts
+    - name: files
       mountPath: /bin/configure-k8s-role.sh
       readOnly: true
       subPath: configure-k8s-role.sh

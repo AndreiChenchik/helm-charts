@@ -1,4 +1,4 @@
-{{- define "vaultlib.unseal.script" }}
+{{- define "vaultlib.unseal.config" }}
 vault-unseal.sh: |-
   #!/bin/ash
   apk --update add jq curl

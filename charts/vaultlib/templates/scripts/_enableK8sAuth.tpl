@@ -1,4 +1,4 @@
-{{- define "vaultlib.enableK8sAuth.script" }}
+{{- define "vaultlib.enableK8sAuth.config" }}
 enable-k8s-auth.sh: |-
   #!/bin/ash
   apk --update add jq curl
@@ -43,7 +43,7 @@ enable-k8s-auth.sh: |-
           name: {{ include "vaultlib.configName" . | quote }}
           key: kubectl_version
   volumeMounts:
-    - name: scripts
+    - name: files
       mountPath: /bin/enable-k8s-auth.sh
       readOnly: true
       subPath: enable-k8s-auth.sh

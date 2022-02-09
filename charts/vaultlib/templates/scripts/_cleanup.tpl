@@ -1,4 +1,4 @@
-{{- define "vaultlib.cleanup.script" }}
+{{- define "vaultlib.cleanup.config" }}
 cleanup.sh: |-
   #!/bin/ash
   apk --update add jq curl
@@ -9,7 +9,7 @@ cleanup.sh: |-
   {{- end }}
 {{- end }}
 
-{{- define "vaultlib.cleanup.runner" }}
+{{- define "vaultlib.cleanup.container" }}
 - name: cleanup
   image: {{ include "vaultlib.clientImage" . | quote }}
   command: ['/bin/cleanup.sh']
@@ -20,7 +20,7 @@ cleanup.sh: |-
           name: {{ include "vaultlib.configName" . | quote }}
           key: kubectl_version
   volumeMounts:
-    - name: scripts
+    - name: files
       mountPath: /bin/cleanup.sh
       readOnly: true
       subPath: cleanup.sh
