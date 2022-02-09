@@ -40,7 +40,7 @@ enable-kv-engine.sh: |-
 
 {{- define "vaultlib.enableKVEngine.container" }}
 - name: enable-kv-engine
-  image: {{ include "vaultlib.clientImage" . | quote }}
+  image: {{ include "vaultlib.configure.container.image" . | quote }}
   command: ['/bin/enable-kv-engine.sh']
   env:
     - name: VAULT_ADDR
@@ -48,12 +48,12 @@ enable-kv-engine.sh: |-
     - name: KUBECTL_VERSION
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: kubectl_version
     - name: KV_ENDPOINT
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: vault_kv_endpoint
   volumeMounts:
     - name: files

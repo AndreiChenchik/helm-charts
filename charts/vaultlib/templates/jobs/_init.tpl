@@ -18,7 +18,7 @@ vault-init.sh: |-
 
 {{- define "vaultlib.init.container" }}
 - name: vault-init
-  image: {{ include "vaultlib.clientImage" . | quote }}
+  image: {{ include "vaultlib.configure.container.image" . | quote }}
   command: ['/bin/vault-init.sh']
   env:
     - name: VAULT_ADDR
@@ -26,17 +26,17 @@ vault-init.sh: |-
     - name: KUBECTL_VERSION
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: kubectl_version
     - name: VAULT_SECRET_SHARES
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: vault_secret_shares
     - name: VAULT_SECRET_THRESHOLD
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: vault_secret_threshold
   volumeMounts:
     - name: files

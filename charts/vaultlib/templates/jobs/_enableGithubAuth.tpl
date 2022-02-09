@@ -1,7 +1,7 @@
 {{- define "vaultlib.enableGithubAuth.config" }}
-github_org: {{ .Values.vault.server.github.org }}
+github_org: {{ .Values.vault.server.githubAuth.org }}
 team-policies.json: |
-{{ .Values.vault.server.github.teamPolicies | indent 2 }}
+{{ .Values.vault.server.githubAuth.teamPolicies | indent 2 }}
 enable-github-auth.sh: |
   #!/bin/ash
   apk --update add jq curl
@@ -38,7 +38,7 @@ enable-github-auth.sh: |
 
 {{- define "vaultlib.enableGithubAuth.container" }}
 - name: enable-github-auth
-  image: {{ include "vaultlib.clientImage" . | quote }}
+  image: {{ include "vaultlib.configure.container.image" . | quote }}
   command: ['/bin/enable-github-auth.sh']
   env:
     - name: VAULT_ADDR
@@ -46,12 +46,12 @@ enable-github-auth.sh: |
     - name: KUBECTL_VERSION
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: kubectl_version
     - name: GITHUB_ORG
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: github_org
   volumeMounts:
     - name: files

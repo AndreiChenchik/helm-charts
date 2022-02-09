@@ -21,7 +21,7 @@ spawn-policies.sh: |
 
 {{- define "vaultlib.spawnPolicies.container" }}
 - name: spawn-policies
-  image: {{ include "vaultlib.clientImage" . | quote }}
+  image: {{ include "vaultlib.configure.container.image" . | quote }}
   command: ['/bin/spawn-policies.sh']
   env:
     - name: VAULT_ADDR
@@ -29,7 +29,7 @@ spawn-policies.sh: |
     - name: KUBECTL_VERSION
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: kubectl_version
   volumeMounts:
     - name: files

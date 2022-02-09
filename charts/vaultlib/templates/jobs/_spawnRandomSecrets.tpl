@@ -1,6 +1,6 @@
 {{- define "vaultlib.spawnRandomSecrets.config" }}
 secrets.json: |
-{{ .Values.vault.app.secrets | indent 2 }}
+{{ .Values.vault.server.randomSecrets | indent 2 }}
 spawn-random-secrets.sh: |
   #!/bin/ash
   apk --update add jq curl pwgen
@@ -30,7 +30,7 @@ spawn-random-secrets.sh: |
 
 {{- define "vaultlib.spawnRandomSecrets.container" }}
 - name: spawn-random-secrets
-  image: {{ include "vaultlib.clientImage" . | quote }}
+  image: {{ include "vaultlib.configure.container.image" . | quote }}
   command: ['/bin/spawn-random-secrets.sh']
   env:
     - name: VAULT_ADDR
@@ -38,7 +38,7 @@ spawn-random-secrets.sh: |
     - name: KUBECTL_VERSION
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: kubectl_version
   volumeMounts:
     - name: files

@@ -18,7 +18,7 @@ vault-unseal.sh: |-
 
 {{- define "vaultlib.unseal.container" }}
 - name: vault-unseal
-  image: {{ include "vaultlib.clientImage" . | quote }}
+  image: {{ include "vaultlib.configure.container.image" . | quote }}
   command: ['/bin/vault-unseal.sh']
   env:
     - name: VAULT_ADDR
@@ -26,17 +26,17 @@ vault-unseal.sh: |-
     - name: KUBECTL_VERSION
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: kubectl_version
     - name: VAULT_SECRET_SHARES
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: vault_secret_shares
     - name: VAULT_SECRET_THRESHOLD
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: vault_secret_threshold
   volumeMounts:
     - name: files

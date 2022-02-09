@@ -32,7 +32,7 @@ enable-k8s-auth.sh: |-
 
 {{- define "vaultlib.enableK8sAuth.container" }}
 - name: enable-k8s-auth
-  image: {{ include "vaultlib.clientImage" . | quote }}
+  image: {{ include "vaultlib.configure.container.image" . | quote }}
   command: ['/bin/enable-k8s-auth.sh']
   env:
     - name: VAULT_ADDR
@@ -40,7 +40,7 @@ enable-k8s-auth.sh: |-
     - name: KUBECTL_VERSION
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: kubectl_version
   volumeMounts:
     - name: files

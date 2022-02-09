@@ -77,7 +77,7 @@ configure-k8s-role.sh: |-
 
 {{- define "vaultlib.configureK8sRole.container" }}
 - name: configure-k8s-role
-  image: {{ include "vaultlib.clientImage" . | quote }}
+  image: {{ include "vaultlib.configure.container.image" . | quote }}
   command: ['/bin/configure-k8s-role.sh']
   env:
     - name: VAULT_ADDR
@@ -85,27 +85,27 @@ configure-k8s-role.sh: |-
     - name: KUBECTL_VERSION
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: kubectl_version
     - name: VAULT_ROLE
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: vault_role
     - name: VAULT_POLICY
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: vault_policy
     - name: VAULT_SA
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: vault_serviceaccount
     - name: VAULT_SA_NAMESPACE
       valueFrom:
         configMapKeyRef:
-          name: {{ include "vaultlib.configName" . | quote }}
+          name: {{ include "vaultlib.configure.configName" . | quote }}
           key: vault_serviceaccount_namespace
   volumeMounts:
     - name: files
