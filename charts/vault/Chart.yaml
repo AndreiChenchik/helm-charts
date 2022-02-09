@@ -2,11 +2,11 @@ apiVersion: v2
 name: vault
 description: An umbrella Helm chart with a Vault instance which can be auto-activated
 type: application
-version: 0.0.11
+version: 0.0.12
 dependencies:
   - name: vault
     version: "0.19.0"
     repository: "https://helm.releases.hashicorp.com"
   - name: vaultlib
-    version: "0.0.17"
+    version: "0.0.18"
     repository: "https://helm.chenchik.me/"
