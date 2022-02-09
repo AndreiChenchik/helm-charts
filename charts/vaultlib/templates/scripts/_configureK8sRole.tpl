@@ -16,6 +16,9 @@ configure-k8s-role.sh: |-
       ttl=24h
   else
     echo "EXISTING VAULT ROLE FOUND, CONFIGURING"
+    
+    tmpfile=$(mktemp -d)
+
     vault read auth/kubernetes/role/$VAULT_ROLE -format=json \
       | jq -r '
         .data
@@ -26,9 +29,9 @@ configure-k8s-role.sh: |-
         --arg sa_name "$VAULT_SA" \
         --arg sa_namespace "$VAULT_SA_NAMESPACE" \
         --arg policy "$VAULT_POLICY" \
-        | > updated_role.json
+        | > $tmpfile/updated_role.json
     
-    vault write auth/kubernetes/role/$VAULT_ROLE @updated_role.json
+    vault write auth/kubernetes/role/$VAULT_ROLE @$tmpfile/updated_role.json
   fi
 
   role=$(vault read auth/kubernetes/role/$VAULT_ROLE -format=json \
