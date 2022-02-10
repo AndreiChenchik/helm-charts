@@ -1,8 +1,8 @@
-{{- define "vaultconfig.inject.ServiceAccount" }}
+{{- define "vaultinject.ServiceAccount" }}
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ include "vaultconfig.inject.serviceAccount" . | quote }}
+  name: {{ include "vaultinject.serviceAccount" . | quote }}
   namespace: "{{ .Release.Namespace }}"
 {{- end }}

@@ -1,4 +1,4 @@
-{{- define "vaultconfig.inject.ExternalSecret" }}
+{{- define "vaultinject.ExternalSecret" }}
 ---
 apiVersion: external-secrets.io/v1alpha1
 kind: ExternalSecret

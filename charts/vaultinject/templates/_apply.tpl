@@ -1,9 +1,9 @@
 {{- define "vaultconfig.apply" -}}
   {{- if or ((((.Values.vault).app).injectSecrets).toEnv) ((((.Values.vault).app).injectSecrets).toFiles) }}
-    {{- include "vaultconfig.inject.ServiceAccount" . }}
+    {{- include "vaultinject.ServiceAccount" . }}
     {{- if ((((.Values.vault).app).injectSecrets).toEnv) }}
-      {{- include "vaultconfig.inject.SecretStore" . }}
-      {{- include "vaultconfig.inject.ExternalSecret" . }}
+      {{- include "vaultinject.SecretStore" . }}
+      {{- include "vaultinject.ExternalSecret" . }}
     {{- end -}}
   {{- end -}}
 {{- end -}}

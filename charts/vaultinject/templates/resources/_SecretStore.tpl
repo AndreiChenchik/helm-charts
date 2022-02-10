@@ -1,4 +1,4 @@
-{{- define "vaultconfig.inject.SecretStore" }}
+{{- define "vaultinject.SecretStore" }}
 ---
 apiVersion: external-secrets.io/v1alpha1
 kind: SecretStore
