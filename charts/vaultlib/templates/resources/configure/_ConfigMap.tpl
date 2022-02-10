@@ -6,7 +6,9 @@ metadata:
   name: {{ include "vaultlib.configure.configName" . | quote }}
   namespace: {{ include "vaultlib.configure.namespace" . | quote }}
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "-1"
+    "helm.sh/hook-delete-policy": before-hook-creation
 data:
   vault_secret_shares: {{ include "vaultlib.configure.unsealSecretShares" . | quote }}
   vault_secret_threshold: {{ include "vaultlib.configure.unsealSecretThreshold" . | quote }}

@@ -2,5 +2,5 @@ apiVersion: v2
 name: vaultlib
 description: A Helm chart with helpers for working with Vault
 type: library
-version: 0.0.48
+version: 0.0.49
 appVersion: "1.9.3"

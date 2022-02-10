@@ -6,7 +6,9 @@ metadata:
   name: {{ .Release.Name }}-vaultlib-role
   namespace: {{ include "vaultlib.configure.namespace" . | quote }}
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "-1"
+    "helm.sh/hook-delete-policy": before-hook-creation
 rules:
   - apiGroups: [""]
     resources: ["secrets"]

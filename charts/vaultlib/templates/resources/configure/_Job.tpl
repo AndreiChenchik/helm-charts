@@ -6,8 +6,9 @@ metadata:
   name: {{ include "vaultlib.configure.jobName" . | quote }}
   namespace: {{ include "vaultlib.configure.namespace" . | quote }}
   annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "-1"
+    "helm.sh/hook-delete-policy": before-hook-creation
 spec:
   backoffLimit: 0
   template:
