@@ -5,8 +5,6 @@ kind: ExternalSecret
 metadata:
   name: {{ include "vaultinject.defaultResourceName" . | quote }}
   namespace: "{{ .Release.Namespace }}"
-  annotations:
-    argocd.argoproj.io/hook: PreSync
 spec:
   refreshInterval: "15s"
   secretStoreRef:

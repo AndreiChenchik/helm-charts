@@ -5,8 +5,6 @@ kind: SecretStore
 metadata:
   name: {{ include "vaultinject.defaultResourceName" . | quote }}
   namespace: "{{ .Release.Namespace }}"
-  annotations:
-    argocd.argoproj.io/hook: PreSync
 spec:
   provider:
     vault: 
