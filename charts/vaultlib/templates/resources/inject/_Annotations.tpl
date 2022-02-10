@@ -7,7 +7,7 @@ vault.hashicorp.com/agent-inject-secret-spawn: {{ include "vaultlib.inject.fullP
 vault.hashicorp.com/secret-volume-path-spawn: {{ include "vaultlib.inject.mountPath" . | quote }}
 vault.hashicorp.com/agent-inject-template-spawn: |
   {{- `
-  {{- with secret "`}}{{ include "vaultlib.inject.fullPathToSecret" . }}{{`" -}}
+  {{- with secret "`}}{{ include "vaultlib.inject.dataPathToSecret" . }}{{`" -}}
   {{- range $k, $v := .Data.data }}
   echo {{ $v }} > `}}{{ include "vaultlib.inject.mountPath" . }}{{`/{{ $k }}
   {{- end }}{{ end }}
