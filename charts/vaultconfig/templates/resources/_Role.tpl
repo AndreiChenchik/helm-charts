@@ -1,10 +1,10 @@
-{{- define "vaultlib.configure.Role" }}
+{{- define "vaultconfig.Role" }}
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ .Release.Name }}-vaultlib-role
-  namespace: {{ include "vaultlib.configure.namespace" . | quote }}
+  name: {{ include "vaultconfig.defaultResourceName" . | quote }}
+  namespace: {{ include "vaultconfig.namespace" . | quote }}
 rules:
   - apiGroups: [""]
     resources: ["secrets"]
