@@ -20,7 +20,7 @@ enable-kv-engine.sh: |-
     exit 0
   fi
 
-  vault secrets enable -path=$KV_ENDPOINT kv
+  vault secrets enable -path=$KV_ENDPOINT kv-v2
 
   kv_endpoint=$(vault secrets list -format=json \
     | jq -r 'to_entries[]
