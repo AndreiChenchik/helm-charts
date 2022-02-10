@@ -6,7 +6,6 @@ metadata:
   name: {{ include "vaultlib.configure.jobName" . | quote }}
   namespace: {{ include "vaultlib.configure.namespace" . | quote }}
   annotations:
-    "helm.sh/hook": pre-install
     "helm.sh/hook-delete-policy": before-hook-creation
 spec:
   backoffLimit: 0
