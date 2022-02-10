@@ -8,7 +8,7 @@ metadata:
 spec:
   refreshInterval: "15s"
   secretStoreRef:
-    name: {{ include "vaultinject.defaultResourceName" . | quote }
+    name: {{ include "vaultinject.defaultResourceName" . | quote }}
     kind: SecretStore
   target:
     name: {{ include "vaultinject.secretName" . | quote }}
