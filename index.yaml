@@ -1475,6 +1475,16 @@ entries:
   vaultinject:
   - apiVersion: v2
     appVersion: 1.9.3
+    created: "2022-02-10T17:33:29.476091554Z"
+    description: A Helm chart with helpers for injecting Vault secrets
+    digest: 8c707e60fff556f689bd5c8b291684556aae534b03a5738ff4711d66b42eef12
+    name: vaultinject
+    type: library
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vaultinject-0.0.11/vaultinject-0.0.11.tgz
+    version: 0.0.11
+  - apiVersion: v2
+    appVersion: 1.9.3
     created: "2022-02-10T17:19:38.259016532Z"
     description: A Helm chart with helpers for injecting Vault secrets
     digest: e9724b8a583709316edea00a83fecfdf09ebe7a77ee5b53306201947fdc9adc6
