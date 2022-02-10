@@ -9,4 +9,4 @@ dependencies:
     repository: "https://helm.releases.hashicorp.com"
   - name: vaultconfig
     version: "0.0.5"
-    repository: "https://helm.chenchik.me"
+    repository: "https://storage.googleapis.com/helm.chenchik.me"
