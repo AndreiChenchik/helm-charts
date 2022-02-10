@@ -18,9 +18,9 @@ spec:
       labels:
         app: {{.Values.name}}
       annotations:
-        {{ include "vaultlib.inject.Annotations" . | indent 8 }}
+        {{ include "vaultinject.Annotations" . | indent 8 }}
     spec:
-      {{ include "vaultlib.inject.serviceAccountName" . | indent 6 }}
+      {{ include "vaultinject.serviceAccountName" . | indent 6 }}
       containers:
         - name: {{.Values.name}}
 

@@ -5,24 +5,6 @@ image:
   pullPolicy: IfNotPresent
 
 vault:
-  server:
-    configure:
-      configureInjectRole: true
-      spawnRandomSecrets: true
-      spawnPolicies: true
-
-    policies: |
-      [{  "name": "postgres-inject",
-          "policy": { "path": { "secrets/data/db": {
-            "capabilities": [ "read" ]
-          }}}
-      }]
-
-    randomSecrets: |
-      [{  "path": "secrets/db",
-          "keys": [ "POSTGRES_PASSWORD" ]
-      }]
-
   app:
     injectSecrets:
       toFiles: true
