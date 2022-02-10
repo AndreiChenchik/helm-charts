@@ -343,6 +343,22 @@ entries:
     version: 0.0.1
   vault:
   - apiVersion: v2
+    created: "2022-02-10T13:10:24.903287041Z"
+    dependencies:
+    - name: vault
+      repository: https://helm.releases.hashicorp.com
+      version: 0.19.0
+    - name: vaultconfig
+      repository: https://helm.chenchik.me/
+      version: 0.0.4
+    description: An umbrella Helm chart with a Vault instance which can be auto-activated
+    digest: 4d6e3bf5ef5752914d516b82da42ce9dbf428b13ac52d1ebd36d440d64dc8510
+    name: vault
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-0.0.31/vault-0.0.31.tgz
+    version: 0.0.31
+  - apiVersion: v2
     created: "2022-02-10T12:30:00.271333901Z"
     dependencies:
     - name: vault
