@@ -22,7 +22,7 @@ spawn-random-secrets.sh: |
     cat secret.json | sed \$d > _secret.json
     echo '}' >> _secret.json
 
-    vault write $secret_path @_secret.json
+    vault kv put $secret_path @_secret.json
   done
 
   echo "SECRETS SEEMS TO BE SPAWNED"
