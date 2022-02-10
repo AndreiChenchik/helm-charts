@@ -24,11 +24,17 @@ if [ $(vault status -format=json | jq '.initialized') = "true" ]; then
 else
   echo "VAULT INITIALIZING START"
   vault operator init -key-shares=$VAULT_SECRET_SHARES -key-threshold=$VAULT_SECRET_THRESHOLD -format=json | tee vault-init.json
-  curl -o /usr/local/bin/kubectl -sLO "https://dl.k8s.io/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl"
-  chmod +x /usr/local/bin/kubectl
-  kubectl create secret generic vault-unseal-root-token --from-literal=root_token=$(cat vault-init.json | jq -r '.root_token')
+
+  kubectl create secret generic vault-unseal-root-token \
+    --from-literal=root_token=$(cat vault-init.json | jq -r '.root_token') \
+    --dry-run -o yaml \
+    | kubectl apply -f -
+
   for key in `seq 0 $(($VAULT_SECRET_SHARES-1))`; do
-    kubectl create secret generic vault-unseal-key-"$key" --from-literal=unseal_key_"$key"=$(cat vault-init.json | jq -r '.unseal_keys_b64['$key']')
+    kubectl create secret generic vault-unseal-key-"$key" \
+      --from-literal=unseal_key_"$key"=$(cat vault-init.json | jq -r '.unseal_keys_b64['$key']') \
+      --dry-run -o yaml \
+      | kubectl apply -f -
   done
 fi
 {{- end }}
