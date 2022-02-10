@@ -3,7 +3,7 @@
 {{- end }}
 
 {{- define "vaultlib.configure.jobName" }}
-  {{- .Release.Name }}-vaultlib-job
+  {{- .Release.Name }}-vaultlib-job-rev{{ .Release.Revision }}
 {{- end }}
 
 {{- define "vaultlib.configure.configName" }}

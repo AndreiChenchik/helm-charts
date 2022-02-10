@@ -3,7 +3,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "vaultlib.configure.jobName" . | quote }}-rev{{ .Release.Revision }}
+  name: {{ include "vaultlib.configure.jobName" . | quote }}
   namespace: {{ include "vaultlib.configure.namespace" . | quote }}
 spec:
   backoffLimit: 0
