@@ -5,6 +5,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: {{ .Release.Name }}-vaultlib-role
   namespace: {{ include "vaultlib.configure.namespace" . | quote }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 rules:
   - apiGroups: [""]
     resources: ["secrets"]

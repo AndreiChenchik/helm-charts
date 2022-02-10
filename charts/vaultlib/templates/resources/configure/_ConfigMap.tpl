@@ -5,6 +5,8 @@ kind: ConfigMap
 metadata:
   name: {{ include "vaultlib.configure.configName" . | quote }}
   namespace: {{ include "vaultlib.configure.namespace" . | quote }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 data:
   vault_secret_shares: {{ include "vaultlib.configure.unsealSecretShares" . | quote }}
   vault_secret_threshold: {{ include "vaultlib.configure.unsealSecretThreshold" . | quote }}
