@@ -13,7 +13,7 @@ spec:
   target:
     name: {{ include "vaultinject.secretName" . | quote }}
   data:
-  {{- range $field :=  .Values.vault.app.injectSecrets.keysToInject }}
+  {{- range $field :=  .Values.vault.app.injectSecrets.keysToEnv }}
     - secretKey: {{ $field }}
       remoteRef:
         key: {{ $.Values.vault.app.injectSecrets.pathToSecret }}
