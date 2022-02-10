@@ -985,6 +985,16 @@ entries:
   vaultconfig:
   - apiVersion: v2
     appVersion: 1.9.3
+    created: "2022-02-10T12:02:17.955610138Z"
+    description: A Helm chart with helpers for configuring Vault
+    digest: 67c08c52d568b8b72b54f06bfe2f6552acbc4f78404bc1c599799bca8009af0f
+    name: vaultconfig
+    type: library
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vaultconfig-0.0.2/vaultconfig-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 1.9.3
     created: "2022-02-10T11:55:34.804594441Z"
     description: A Helm chart with helpers for configuring Vault
     digest: 63f5ad5c945cd36116e424b44b6b3f7249829a6a13b4922706c990a7a5324c43
