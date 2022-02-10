@@ -1,4 +1,4 @@
-{{- define "vaultconfig.apply" -}}
+{{- define "vaultinject.apply" -}}
   {{- if or ((((.Values.vault).app).injectSecrets).toEnv) ((((.Values.vault).app).injectSecrets).toFiles) }}
     {{- include "vaultinject.ServiceAccount" . }}
     {{- if ((((.Values.vault).app).injectSecrets).toEnv) }}
