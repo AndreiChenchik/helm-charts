@@ -3,7 +3,7 @@
 apiVersion: external-secrets.io/v1alpha1
 kind: SecretStore
 metadata:
-  name: {{ include "vaultinject.defaultResourceName" . | quote }
+  name: {{ include "vaultinject.defaultResourceName" . | quote }}
   namespace: "{{ .Release.Namespace }}"
 spec:
   provider:
