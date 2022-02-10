@@ -36,3 +36,5 @@ jobs:
           path: ".cr-index"
           destination: "helm.chenchik.me"
           parent: false
+          headers: |-
+            Cache-Control: public, max-age=1
