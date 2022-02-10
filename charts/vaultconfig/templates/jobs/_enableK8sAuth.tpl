@@ -20,10 +20,7 @@ if ! vault auth list | grep kubernetes/ ; then
 fi
 
 vault write auth/kubernetes/config \
-    kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443" \
-    token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
-    kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
-    issuer="https://kubernetes.default.svc.cluster.local"
+    kubernetes_host=https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_SERVICE_PORT
 
 if ! vault auth list | grep kubernetes; then
   echo "SOMETHING WENT WRONG, CAN'T ENABLE KUBERNETES AUTH FOR VAULT"
