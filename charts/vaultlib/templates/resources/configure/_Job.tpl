@@ -3,11 +3,8 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "vaultlib.configure.jobName" . | quote }}
+  name: {{ include "vaultlib.configure.jobName" . | quote }}-rev{{ .Release.Revision }}
   namespace: {{ include "vaultlib.configure.namespace" . | quote }}
-  annotations:
-    "helm.sh/hook": post-install,post-upgrade
-    "helm.sh/hook-delete-policy": before-hook-creation
 spec:
   backoffLimit: 0
   template:
