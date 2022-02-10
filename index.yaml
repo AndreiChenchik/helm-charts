@@ -966,6 +966,17 @@ entries:
     urls:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-policy-0.0.3/vault-policy-0.0.3.tgz
     version: 0.0.3
+  vaultconfig:
+  - apiVersion: v2
+    appVersion: 1.9.3
+    created: "2022-02-10T11:55:34.804594441Z"
+    description: A Helm chart with helpers for configuring Vault
+    digest: 63f5ad5c945cd36116e424b44b6b3f7249829a6a13b4922706c990a7a5324c43
+    name: vaultconfig
+    type: library
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vaultconfig-0.0.1/vaultconfig-0.0.1.tgz
+    version: 0.0.1
   vaultlib:
   - apiVersion: v2
     appVersion: 1.9.3
