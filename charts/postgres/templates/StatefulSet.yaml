@@ -39,6 +39,8 @@ spec:
               value: /secrets/POSTGRES_PASSWORD
             - name: PGDATA
               value: /data/pgdata
+          envFrom:  
+            {{ include "vaultinject.envFrom" . | indent 12 }}
 
   volumeClaimTemplates:
     - metadata:

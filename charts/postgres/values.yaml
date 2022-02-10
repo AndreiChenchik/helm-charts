@@ -8,6 +8,11 @@ vault:
   app:
     injectSecrets:
       toFiles: true
+      toEnv: true
+
+      keysToEnv:
+        - POSTGRES_PASSWORD
+
       pathToSecret: "db"
       mountPath: /secrets
       policy: postgres-inject
