@@ -35,8 +35,8 @@ spec:
               mountPath: /data
 
           env:
-            - name: POSTGRES_PASSWORD
-              value: asdsads
+            - name: POSTGRES_PASSWORD_FILE
+              value: /secrets/POSTGRES_PASSWORD
             - name: PGDATA
               value: /data/pgdata
 
