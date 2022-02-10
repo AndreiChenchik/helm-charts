@@ -3,6 +3,20 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: "14.1"
+    created: "2022-02-10T17:33:57.73592279Z"
+    dependencies:
+    - name: vaultinject
+      repository: https://helm.chenchik.me
+      version: 0.0.11
+    description: A Helm chart for Postgres with Vault secret
+    digest: 66eb8c68613f050e75102ec643bc18929ce255515bca2d0fc6f3e24d90f40aaa
+    name: postgres
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/postgres-0.0.32/postgres-0.0.32.tgz
+    version: 0.0.32
+  - apiVersion: v2
+    appVersion: "14.1"
     created: "2022-02-10T17:28:36.012950605Z"
     dependencies:
     - name: vaultinject
@@ -1473,16 +1487,6 @@ entries:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/vaultconfig-0.0.1/vaultconfig-0.0.1.tgz
     version: 0.0.1
   vaultinject:
-  - apiVersion: v2
-    appVersion: 1.9.3
-    created: "2022-02-10T17:33:29.476091554Z"
-    description: A Helm chart with helpers for injecting Vault secrets
-    digest: 8c707e60fff556f689bd5c8b291684556aae534b03a5738ff4711d66b42eef12
-    name: vaultinject
-    type: library
-    urls:
-    - https://github.com/AndreiChenchik/helm-charts/releases/download/vaultinject-0.0.11/vaultinject-0.0.11.tgz
-    version: 0.0.11
   - apiVersion: v2
     appVersion: 1.9.3
     created: "2022-02-10T17:19:38.259016532Z"
