@@ -30,7 +30,7 @@ if ! vault auth list | grep kubernetes; then
   exit 1
 fi
 
-if vault read auth/kubernetes/config | grep $KUBERNETES_PORT_443_TCP_ADDR; then
+if ! vault read auth/kubernetes/config | grep $KUBERNETES_PORT_443_TCP_ADDR; then
   echo "SOMETHING WENT WRONG, CAN'T CONFIGURE KUBERNETES AUTH FOR VAULT"
   exit 1
 fi
