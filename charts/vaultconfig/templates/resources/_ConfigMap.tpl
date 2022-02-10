@@ -6,6 +6,7 @@ metadata:
   name: {{ include "vaultconfig.defaultResourceName" . | quote }}
   namespace: {{ include "vaultconfig.namespace" . | quote }}
 data:
+  vault_addr: {{ include "vaultconfig.serverUrl" . | quote }}
   kubectl_version: {{ include "vaultconfig.container.kubectlVersion" . | quote }}
   {{- if or .Values.vault.server.configure.init .Values.vault.server.configure.unseal }} {{- include "vaultconfig.init.config" . | indent 2 }} {{- end }}
   {{- if .Values.vault.server.configure.enableGithubAuth }} {{- include "vaultconfig.enableGithubAuth.config" . | indent 2 }} {{- end }}
