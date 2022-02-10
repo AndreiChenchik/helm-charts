@@ -39,11 +39,14 @@ jq -c '.[]' /conf/github-team-policies.json | while read team_policy; do
   vault write auth/github/map/teams/$team_name value=$policy_name
 done
 
-if ! vault auth list | grep kubernetes; then
-  if ! vault read auth/github/config | grep $GITHUB_ORG; then
-    echo "SOMETHING WENT WRONG, CAN'T ENABLE GITHUB AUTH FOR VAULT"
-    exit 1
-  fi
+if ! vault auth list | grep github/; then
+  echo "SOMETHING WENT WRONG, CAN'T ENABLE GITHUB AUTH FOR VAULT"
+  exit 1
+fi
+
+if ! vault read auth/github/config | grep $GITHUB_ORG; then
+  echo "SOMETHING WENT WRONG, CAN'T CONFIGURE GITHUB AUTH FOR VAULT"
+  exit 1
 fi
 
 echo "GITHUB AUTH ENABLED FOR VAULT"
