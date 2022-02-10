@@ -3,15 +3,15 @@
 {{- end }}
 
 {{- define "vaultlib.configure.jobName" }}
-  {{- .Release.Name }}-vaultlib-job-rev{{ .Release.Revision }}
+  {{- .Release.Name }}-vault-config
 {{- end }}
 
 {{- define "vaultlib.configure.configName" }}
-  {{- .Release.Name }}-vaultlib-config
+  {{- .Release.Name }}-vault-config
 {{- end }}
 
 {{- define "vaultlib.configure.serviceAccount" }}
-  {{- .Release.Name }}-vaultlib-sa
+  {{- .Release.Name }}-vault-config
 {{- end }}
 
 {{- define "vaultlib.configure.container.image" }}

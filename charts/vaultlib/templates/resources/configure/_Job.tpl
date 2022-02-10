@@ -6,6 +6,7 @@ metadata:
   name: {{ include "vaultlib.configure.jobName" . | quote }}
   namespace: {{ include "vaultlib.configure.namespace" . | quote }}
 spec:
+  ttlSecondsAfterFinished: 60
   backoffLimit: 0
   template:
     spec:
