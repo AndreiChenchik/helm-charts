@@ -5,8 +5,10 @@ kind: Job
 metadata:
   name: {{ include "vaultlib.configure.jobName" . | quote }}
   namespace: {{ include "vaultlib.configure.namespace" . | quote }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 spec:
-  ttlSecondsAfterFinished: 60
   backoffLimit: 0
   template:
     spec:
