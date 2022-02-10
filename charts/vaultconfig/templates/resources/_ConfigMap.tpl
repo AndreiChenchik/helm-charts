@@ -28,8 +28,10 @@ data:
         exit 1
       elif vault status; then
         echo "VAULT OK EXITING"
+        break
       elif [ "$?" = "2" ]; then
         echo "VAULT SEALED"
+        break
       else
         echo "sleeping for $attempt"
         sleep "$attempt"
