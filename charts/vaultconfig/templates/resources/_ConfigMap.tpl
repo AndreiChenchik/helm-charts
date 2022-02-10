@@ -14,7 +14,7 @@ data:
   {{- if .Values.vault.server.configure.enableK8sAuth }} {{- include "vaultconfig.enableK8sAuth.config" . | indent 2 }} {{- end }}
   {{- if .Values.vault.server.configure.spawnPolicies }} {{- include "vaultconfig.spawnPolicies.config" . | indent 2 }} {{- end }}
   {{- if .Values.vault.server.configure.spawnRandomSecrets }} {{- include "vaultconfig.spawnRandomSecrets.config" . | indent 2 }} {{- end }}
-  check-vault-running.sh: |-
+  vault-configure.sh: |-
     #!/bin/ash
     set -e 
 
