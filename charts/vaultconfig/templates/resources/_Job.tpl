@@ -16,7 +16,9 @@ spec:
       containers:
         - name: vault-configure
           image: {{ include "vaultconfig.container.image" . | quote }}
-          command: ["/bin/vault-configure.sh"]
+          # command: ["/bin/vault-configure.sh"]
+          command: [ "/bin/ash", "-c", "--" ]
+          args: [ "while true; do sleep 30; done;" ]
           env:
             - name: VAULT_ADDR
               valueFrom:
