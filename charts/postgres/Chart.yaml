@@ -2,9 +2,9 @@ apiVersion: v2
 name: postgres
 description: A Helm chart for Postgres with Vault secret
 type: application
-version: 0.0.34
+version: 0.0.35
 appVersion: "14.1"
 dependencies:
   - name: vaultinject
-    version: "0.0.12"
+    version: "0.0.13"
     repository: "https://helm.chenchik.me"

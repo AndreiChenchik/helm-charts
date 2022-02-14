@@ -3,12 +3,3 @@ name: postgres
 image:
   repository: postgres
   pullPolicy: IfNotPresent
-
-vault:
-  app:
-    injectSecrets:
-      toFiles: true
-
-      pathToSecret: "db"
-      mountPath: /secrets
-      policy: postgres-inject
