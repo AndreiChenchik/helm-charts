@@ -1531,16 +1531,6 @@ entries:
   vaultinject:
   - apiVersion: v2
     appVersion: 1.9.3
-    created: "2022-02-14T20:26:57.769234435Z"
-    description: A Helm chart with helpers for injecting Vault secrets
-    digest: 5e4718dfd5076de36f2af6240e247fe0052b042434547a0a3807fc62ee168d03
-    name: vaultinject
-    type: library
-    urls:
-    - https://github.com/AndreiChenchik/helm-charts/releases/download/vaultinject-0.0.16/vaultinject-0.0.16.tgz
-    version: 0.0.16
-  - apiVersion: v2
-    appVersion: 1.9.3
     created: "2022-02-14T20:17:13.825952879Z"
     description: A Helm chart with helpers for injecting Vault secrets
     digest: dfccdd7e1512a3cf89d67c8623487b5a3f4c03147f2edf1a45cec09f68444b58
@@ -2101,6 +2091,18 @@ entries:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/vaultlib-0.0.6/vaultlib-0.0.6.tgz
     version: 0.0.6
   web-app:
+  - apiVersion: v2
+    created: "2022-02-14T20:27:37.03021457Z"
+    dependencies:
+    - name: vaultinject
+      repository: https://helm.chenchik.me/
+      version: 0.0.16
+    description: A Helm chart for adding arbitry web app to k8s
+    digest: dfc80b9ac75949b6a3bfdbc5291f0d0ce202c87140445a2fbbde379611cd9181
+    name: web-app
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/web-app-0.4.4/web-app-0.4.4.tgz
+    version: 0.4.4
   - apiVersion: v2
     created: "2022-02-14T20:18:28.712858595Z"
     dependencies:
