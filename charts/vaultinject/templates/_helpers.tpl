@@ -1,9 +1,9 @@
 {{- define "vaultinject.serverUrl" }}
-  {{- ((.Values.vault.server).url) | default "http://vault.vault:8200" }}
+  {{- (((.Values.vault).server).url) | default "http://vault.vault:8200" }}
 {{- end }}
 
 {{- define "vaultinject.kvEndpoint" }}
-  {{- ((.Values.vault.server).kvEndpoint) | default "secrets" }}
+  {{- (((.Values.vault).server).kvEndpoint) | default "secrets" }}
 {{- end }}
 
 {{- define "vaultinject.defaultResourceName" }}

@@ -4,15 +4,15 @@
 apiVersion: external-secrets.io/v1alpha1
 kind: ExternalSecret
 metadata:
-  name: {{ include "vaultinject.defaultResourceName" . | quote }}-{{ $index }}
+  name: {{ include "vaultinject.defaultResourceName" $. | quote }}-{{ $index }}
   namespace: "{{ .Release.Namespace }}"
 spec:
   refreshInterval: "15s"
   secretStoreRef:
-    name: {{ include "vaultinject.defaultResourceName" . | quote }}
+    name: {{ include "vaultinject.defaultResourceName" $. | quote }}
     kind: SecretStore
   target:
-    name: {{ include "vaultinject.secretName" . | quote }}-{{ $index }}
+    name: {{ include "vaultinject.secretName" $. | quote }}-{{ $index }}
   data:
   {{- range $field := $secret.keys }}
     - secretKey: {{ $field }}
