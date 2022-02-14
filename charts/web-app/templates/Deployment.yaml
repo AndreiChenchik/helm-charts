@@ -10,14 +10,16 @@ spec:
   selector:
     matchLabels:
       app: "{{ .Release.Name }}"
+      namespace: "{{ .Release.Namespace }}"
   template:
     metadata:
       labels:
         app: "{{ .Release.Name }}"
+        namespace: "{{ .Release.Namespace }}"
       annotations:
-        {{ include "vaultlib.inject.Annotations" . | indent 8 }}
+        {{ include "vaultinject.Annotations" . | indent 8 }}
     spec:
-      {{ include "vaultlib.inject.serviceAccountName" . | indent 6 }}
+      {{ include "vaultinject.serviceAccountName" . | indent 6 }}
       {{- if .Values.image.pullSecret }}
       imagePullSecrets:
         - name: {{ .Values.image.pullSecret }}
@@ -29,7 +31,7 @@ spec:
           ports:
             - containerPort: {{ .Values.service.targetPort }}
           envFrom:  
-            {{ include "vaultlib.inject.envFrom" . | indent 12 }}
+            {{ include "vaultinject.envFrom" . | indent 12 }}
             {{- if .Values.config }}
             - configMapRef:
                 name: "{{ .Release.Name }}"
