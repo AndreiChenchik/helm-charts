@@ -3,6 +3,20 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: "14.1"
+    created: "2022-02-14T17:07:37.634717927Z"
+    dependencies:
+    - name: vaultinject
+      repository: https://helm.chenchik.me
+      version: 0.0.13
+    description: A Helm chart for Postgres with Vault secret
+    digest: 6e6df5fffcd3e4ce62bb83eedacad709b7d88d086171a8fd167f10ce203d07fc
+    name: postgres
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/postgres-0.0.35/postgres-0.0.35.tgz
+    version: 0.0.35
+  - apiVersion: v2
+    appVersion: "14.1"
     created: "2022-02-10T17:42:13.159887555Z"
     dependencies:
     - name: vaultinject
@@ -2067,6 +2081,18 @@ entries:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/vaultlib-0.0.6/vaultlib-0.0.6.tgz
     version: 0.0.6
   web-app:
+  - apiVersion: v2
+    created: "2022-02-14T17:07:37.793814546Z"
+    dependencies:
+    - name: vaultinject
+      repository: https://helm.chenchik.me/
+      version: 0.0.13
+    description: A Helm chart for adding arbitry web app to k8s
+    digest: 504f16c1178448c8cb3e22870b60ab4d41dbc5204ff7c4865d4c59c341005696
+    name: web-app
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/web-app-0.4.2/web-app-0.4.2.tgz
+    version: 0.4.2
   - apiVersion: v2
     created: "2022-02-09T22:48:14.093894987Z"
     dependencies:
