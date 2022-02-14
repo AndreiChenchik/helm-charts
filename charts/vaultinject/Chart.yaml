@@ -2,5 +2,5 @@ apiVersion: v2
 name: vaultinject
 description: A Helm chart with helpers for injecting Vault secrets
 type: library
-version: 0.0.12
+version: 0.0.13
 appVersion: "1.9.3"

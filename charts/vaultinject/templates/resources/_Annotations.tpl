@@ -1,5 +1,5 @@
 {{- define "vaultinject.Annotations" }}
-{{- if .Values.vault.app.injectSecrets.toFiles }}
+{{- if (((.Values.vault).app).injectSecrets).toFiles }}
 vault.hashicorp.com/agent-inject: "true"
 vault.hashicorp.com/agent-inject-status: "update"
 vault.hashicorp.com/role: {{ include "vaultinject.role" . | quote }}
