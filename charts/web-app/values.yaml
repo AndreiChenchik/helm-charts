@@ -1,6 +1,6 @@
 image:
   repository: containous/whoami
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: latest
 
 service:
