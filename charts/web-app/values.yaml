@@ -6,3 +6,5 @@ image:
 service:
   targetPort: 8000
   servicePort: 80
+
+ingressEntryPoint: websecure
