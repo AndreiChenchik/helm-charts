@@ -2158,6 +2158,18 @@ entries:
     version: 0.0.6
   web-app:
   - apiVersion: v2
+    created: "2022-06-06T21:27:16.812092412Z"
+    dependencies:
+    - name: vaultinject
+      repository: https://helm.chenchik.me/
+      version: 0.0.17
+    description: A Helm chart for adding arbitry web app to k8s
+    digest: 5ef3a42f1ce37a9ce450af138bdeec23c3405c301f051468cd2992f428987c77
+    name: web-app
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/web-app-0.4.18/web-app-0.4.18.tgz
+    version: 0.4.18
+  - apiVersion: v2
     created: "2022-06-06T19:30:34.16559673Z"
     dependencies:
     - name: vaultinject
@@ -2620,4 +2632,4 @@ entries:
     urls:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/web-app-0.1.0/web-app-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-06T20:49:31.17920824Z"
+generated: "2022-06-06T21:27:16.813406528Z"
