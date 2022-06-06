@@ -2,5 +2,5 @@ apiVersion: v2
 name: vaultconfig
 description: A Helm chart with helpers for configuring Vault
 type: library
-version: 0.0.19
+version: 0.0.20
 appVersion: "1.9.3"
