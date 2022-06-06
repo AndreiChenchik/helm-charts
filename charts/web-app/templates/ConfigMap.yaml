@@ -6,11 +6,15 @@ metadata:
   namespace: "{{ .Release.Namespace }}"
 data: 
   {{- range $k, $v :=  .Values.config }}
-  {{- if kindIs "string" $v }}{{- if contains "\n" $v }}
+    {{- if kindIs "string" $v }}
+      {{- if contains "\n" $v }}
   {{ $k }}: |- 
 {{ $v | indent 4 }}
-  {{- end }}{{- else }}
+      {{- else }}
   {{ $k }}: '{{ $v }}'
-  {{- end }}
+      {{- end }}
+    {{- else }}
+  {{ $k }}: {{ $v }}
+    {{- end }}
   {{- end }}
 {{- end }}
