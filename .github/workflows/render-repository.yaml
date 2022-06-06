@@ -18,6 +18,12 @@ jobs:
         run: |
           "${GITHUB_WORKSPACE}/test.sh"
 
+      - name: Helm Deps
+        run: |
+          for dir in $(ls -d charts/*); do
+            helm dependency update $dir;
+          done
+
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
