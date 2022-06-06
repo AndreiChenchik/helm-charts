@@ -1,6 +1,6 @@
 image:
   repository: "k3d-registry/web-app"
-  tag: "latest"
+  tag: "additional-containers"
 
 ingressHost: web-app-host
 ingressEntryPoint: web
