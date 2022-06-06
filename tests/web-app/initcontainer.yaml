@@ -1,0 +1,19 @@
+image:
+  repository: "k3d-registry/web-app"
+  tag: "latest"
+
+service:
+  targetPort: 8000
+
+volumePath: /data/dir
+
+config:
+  SOME_ENV: value
+
+initContainers:
+  - name: some-container
+    image: k3d-registry/web-container
+    args: ["test", "--debug"]
+    volumeMounts:
+      - name: data
+        mountPath: /data

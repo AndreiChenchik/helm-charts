@@ -6,7 +6,9 @@ then
   exit
 fi
 
-SCRIPT_DIR="$(dirname $0)"
+SCRIPT_DIR="$(dirname "$0")"
+cd $SCRIPT_DIR
+SCRIPT_DIR=$(pwd)
 
 if [ ! -d "$SCRIPT_DIR/$1" ]
 then
@@ -22,7 +24,7 @@ code=0
 log=$(mktemp)
 error_log=$(mktemp)
 
-YAMLS="$SCRIPT_DIR/$1/*.yaml"
+YAMLS="$SCRIPT_DIR/$1/*"
 for yaml in $YAMLS
 do
   helm template test ../../charts/$1 -f $yaml 2>>$error_log >>$log 
