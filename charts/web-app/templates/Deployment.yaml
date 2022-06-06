@@ -28,7 +28,7 @@ spec:
       {{ include "vaultinject.serviceAccountName" . | indent 6 }}
       {{- if .Values.initContainers }}
       initContainers:
-{{ toYaml .Values.initContainers | indent 8}}
+{{ toYaml .Values.initContainers | indent 8 }}
       {{- end }}
       {{- if .Values.image.pullSecret }}
       imagePullSecrets:
@@ -55,6 +55,13 @@ spec:
           - name: {{ .Values.volumeName | default "data" }}
             mountPath: {{ .Values.volumePath }}
           {{- end }}
+      {{- if .Values.config }}
+      # FIXME: figure it out, there is no need to set every config as volume
+      volumes:
+      - name: config
+        configMap:
+          name: "{{ .Release.Name }}"
+      {{- end }}
   {{- if .Values.volumePath }}
   volumeClaimTemplates:
   - metadata:
