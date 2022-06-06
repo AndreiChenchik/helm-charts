@@ -1,9 +1,9 @@
 dependencies:
 - name: vault
   repository: https://helm.releases.hashicorp.com
-  version: 0.19.0
+  version: 0.20.0
 - name: vaultconfig
   repository: https://helm.chenchik.me
-  version: 0.0.17
-digest: sha256:79c95fa22926bf2be496ac8a1dee8268b9ef67f5e4bc875d87f3697e6d446c11
-generated: "2022-06-06T15:49:47.020766+02:00"
+  version: 0.0.20
+digest: sha256:0cfd90584196073b14b67f0eecf758ff19b412cb28fdf70a4bd3e3634cc222c5
+generated: "2022-06-06T22:47:03.572939+02:00"
