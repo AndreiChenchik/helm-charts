@@ -1,0 +1,22 @@
+image:
+  repository: "k3d-registry/web-app"
+  tag: "latest"
+
+ingressHost: web-app-host
+ingressEntryPoint: web
+
+service:
+  targetPort: 8000
+
+config:
+  SOME_ENV: value
+
+vault:
+  app:
+    injectSecrets:
+      toFiles: true
+
+      secrets:
+        - path: secrets-path
+      mountPath: /secrets
+      policy: vault-policy-inject

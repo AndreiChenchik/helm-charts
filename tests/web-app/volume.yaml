@@ -1,0 +1,11 @@
+image:
+  repository: "k3d-registry/web-app"
+  tag: "latest"
+
+service:
+  targetPort: 8000
+
+volumePath: /data/dir
+
+config:
+  SOME_ENV: value

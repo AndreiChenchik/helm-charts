@@ -1,12 +1,15 @@
 ---
 apiVersion: apps/v1
+{{- if .Values.volumePath }}
+kind: StatefulSet
+{{- else }}
 kind: Deployment
+{{- end }}
 metadata:
   name: "{{ .Release.Name }}"
   namespace: "{{ .Release.Namespace }}"
 spec:
   replicas: 1
-  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: "{{ .Release.Name }}"
@@ -20,6 +23,10 @@ spec:
         {{ include "vaultinject.Annotations" . | indent 8 }}
     spec:
       {{ include "vaultinject.serviceAccountName" . | indent 6 }}
+      {{- if .Values.initContainers }}
+      initContainers:
+{{ toYaml .Values.initContainers | indent 8}}
+      {{- end }}
       {{- if .Values.image.pullSecret }}
       imagePullSecrets:
         - name: {{ .Values.image.pullSecret }}
@@ -35,8 +42,23 @@ spec:
             {{- if .Values.config }}
             - configMapRef:
                 name: "{{ .Release.Name }}"
-            {{- end}}
+            {{- end }}
             {{- if .Values.envSecrets }}
             - secretRef:
                 name: {{ .Values.envSecrets }}
             {{- end }}
+          {{- if .Values.volumePath }}
+          volumeMounts:
+          - name: data
+            mountPath: {{ .Values.volumePath }}
+          {{- end }}
+  {{- if .Values.volumePath }}
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 100Mi
+  {{- end }}

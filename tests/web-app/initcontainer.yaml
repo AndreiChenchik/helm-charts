@@ -13,7 +13,9 @@ config:
 initContainers:
   - name: some-container
     image: k3d-registry/web-container
-    args: ["test", "--debug"]
+    args:
+      - "test"
+      - "--debug"
     volumeMounts:
       - name: data
         mountPath: /data
