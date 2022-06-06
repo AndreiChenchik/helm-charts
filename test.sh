@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && pwd 2> /dev/null; )";
+SCRIPT_DIR="$(dirname $0)"
 cd $SCRIPT_DIR
 
 code=0
@@ -8,8 +8,8 @@ code=0
 CHARTS="$SCRIPT_DIR/charts/*"
 for chart in $CHARTS
 do
-  if [ ! -d "$chart" ]; then
-  # Take action if $DIR exists. #
+  if [ ! -d "$chart" ]
+  then
     >&2 echo "Skipping: Can't find chart dir at $chart..."
     continue
   fi

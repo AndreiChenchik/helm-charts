@@ -6,10 +6,10 @@ then
   exit
 fi
 
-SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && pwd 2> /dev/null; )";
+SCRIPT_DIR="$(dirname $0)"
 
-if [ ! -d "$SCRIPT_DIR/$1" ]; then
-# Take action if $DIR exists. #
+if [ ! -d "$SCRIPT_DIR/$1" ]
+then
   >&2 echo "Skipping: No tests set for $1"
   exit 0
 fi
