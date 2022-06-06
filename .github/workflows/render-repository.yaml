@@ -24,6 +24,7 @@ jobs:
             helm dependency update $dir;
           done
           helm repo add self https://helm.chenchik.me
+          helm repo add hashicorp https://helm.releases.hashicorp.com
 
       - name: Configure Git
         run: |
