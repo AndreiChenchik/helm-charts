@@ -6,7 +6,7 @@ metadata:
   namespace: "{{ .Release.Namespace }}"
 data: 
   {{- range $k, $v :=  .Values.config }}
-  {{- if contains "\n" $v }}
+  {{- if and (kindIs "string" $v) (contains "\n" $v) }}
   {{ $k }}: |- 
 {{ $v | indent 4 }}
   {{- else }}

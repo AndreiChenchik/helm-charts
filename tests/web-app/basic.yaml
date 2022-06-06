@@ -10,6 +10,10 @@ service:
 
 config:
   SOME_ENV: value
+  SOME_BINARY: |-
+    value
+    test
+  Some_float: 0.02
 
 vault:
   app:
