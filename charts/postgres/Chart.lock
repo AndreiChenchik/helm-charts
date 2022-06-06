@@ -1,0 +1,6 @@
+dependencies:
+- name: vaultinject
+  repository: https://helm.chenchik.me
+  version: 0.0.13
+digest: sha256:c2e596ac96d456f35ba628ae3568b157012369f2129e5b90ff216f1cf37d1767
+generated: "2022-06-06T15:46:34.660198+02:00"

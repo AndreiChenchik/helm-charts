@@ -8,5 +8,5 @@ dependencies:
     version: "0.19.0"
     repository: "https://helm.releases.hashicorp.com"
   - name: vaultconfig
-    version: "0.0.19"
+    version: "0.0.17"
     repository: "https://helm.chenchik.me"
