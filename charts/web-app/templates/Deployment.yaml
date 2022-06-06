@@ -55,6 +55,9 @@ spec:
           - name: {{ .Values.volumeName | default "data" }}
             mountPath: {{ .Values.volumePath }}
           {{- end }}
+          {{- if .Values.additionalContainers }}
+{{ toYaml .Values.additionalContainers | indent 8 }}
+          {{- end }}
       {{- if .Values.config }}
       # FIXME: figure it out, there is no need to set every config as volume
       volumes:

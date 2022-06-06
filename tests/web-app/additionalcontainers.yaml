@@ -1,0 +1,36 @@
+image:
+  repository: "k3d-registry/web-app"
+  tag: "latest"
+
+ingressHost: web-app-host
+ingressEntryPoint: web
+
+service:
+  targetPort: 8000
+
+config:
+  SOME_ENV: value
+  SOME_BINARY: |-
+    value
+    test
+  Some_float: 0.02
+
+vault:
+  app:
+    injectSecrets:
+      toFiles: true
+
+      secrets:
+        - path: secrets-path
+      mountPath: /secrets
+      policy: vault-policy-inject
+
+additionalContainers:
+  - name: some-container
+    image: k3d-registry/web-container
+    args:
+      - "test"
+      - "--debug"
+    volumeMounts:
+      - name: data
+        mountPath: /data
