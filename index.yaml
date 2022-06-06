@@ -3,6 +3,20 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: "14.1"
+    created: "2022-06-06T13:55:06.480690379Z"
+    dependencies:
+    - name: vaultinject
+      repository: https://helm.chenchik.me
+      version: 0.0.13
+    description: A Helm chart for Postgres with Vault secret
+    digest: 64c83ee3989dab98c1106963e39508909f55e560f3949504b714a5a2c1fdca01
+    name: postgres
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/postgres-0.0.36/postgres-0.0.36.tgz
+    version: 0.0.36
+  - apiVersion: v2
+    appVersion: "14.1"
     created: "2022-02-14T17:07:37.634717927Z"
     dependencies:
     - name: vaultinject
@@ -482,6 +496,22 @@ entries:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/python-app-0.0.1/python-app-0.0.1.tgz
     version: 0.0.1
   vault:
+  - apiVersion: v2
+    created: "2022-06-06T13:55:06.687345954Z"
+    dependencies:
+    - name: vault
+      repository: https://helm.releases.hashicorp.com
+      version: 0.19.0
+    - name: vaultconfig
+      repository: https://helm.chenchik.me
+      version: 0.0.17
+    description: An umbrella Helm chart with a Vault instance which can be auto-activated
+    digest: 57e6f877a015ce73b7bc2468de67971427bb88c49cf79bdfb90654ac55609aff
+    name: vault
+    type: application
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/vault-0.0.53/vault-0.0.53.tgz
+    version: 0.0.53
   - apiVersion: v2
     created: "2022-02-10T16:42:54.228371214Z"
     dependencies:
@@ -2102,6 +2132,18 @@ entries:
     version: 0.0.6
   web-app:
   - apiVersion: v2
+    created: "2022-06-06T13:55:06.895975068Z"
+    dependencies:
+    - name: vaultinject
+      repository: https://helm.chenchik.me/
+      version: 0.0.17
+    description: A Helm chart for adding arbitry web app to k8s
+    digest: a57049f5b9373bcc21ba78b18dc2f70af12ba87bbed2272634b34b1fd976ce61
+    name: web-app
+    urls:
+    - https://github.com/AndreiChenchik/helm-charts/releases/download/web-app-0.4.10/web-app-0.4.10.tgz
+    version: 0.4.10
+  - apiVersion: v2
     created: "2022-05-31T19:45:30.568503148Z"
     dependencies:
     - name: vaultinject
@@ -2468,4 +2510,4 @@ entries:
     urls:
     - https://github.com/AndreiChenchik/helm-charts/releases/download/web-app-0.1.0/web-app-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-02T07:44:29.3003065Z"
+generated: "2022-06-06T13:55:06.897401297Z"
