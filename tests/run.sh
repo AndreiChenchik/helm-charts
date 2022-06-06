@@ -27,7 +27,7 @@ error_log=$(mktemp)
 YAMLS="$SCRIPT_DIR/$1/*"
 for yaml in $YAMLS
 do
-  helm template test ../../charts/$1 -f $yaml 2>>$error_log >>$log 
+  helm template test ../../charts/$1 $2 -f $yaml 2>>$error_log >>$log 
   if [ "$?" = "0" ]
   then
     >&2 printf '%s' "+"
@@ -36,8 +36,8 @@ do
     code=1
   fi
 done
-echo ""
 
+>&2 echo ""
 >&2 cat $error_log
 
 if [ "$2" = "--debug" ]
