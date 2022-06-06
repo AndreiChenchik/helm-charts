@@ -6,6 +6,7 @@ service:
   targetPort: 8000
 
 volumePath: /data/dir
+volumeName: megadata
 
 config:
   SOME_ENV: value
